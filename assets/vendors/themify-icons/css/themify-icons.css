@@ -1079,3 +1079,17 @@
 .ti-rss-alt:before {
 	content: "\e75f";
 }
+
+.about-img {
+  width: 250px;            /* adjust size */
+  height: auto;
+  border-radius: 20px;     /* rounded edges */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* soft shadow */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  object-fit: cover;       /* crop nicely */
+}
+
+.about-img:hover {
+  transform: scale(1.05);  /* zoom effect */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); /* stronger shadow */
+}

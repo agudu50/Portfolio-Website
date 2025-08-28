@@ -9,9 +9,23 @@
     <title>Anthony Gudu||Portfolio</title>
     <!-- font icons -->
     <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/imgs/favicon.png">
+    <link ref href="">
     <!-- Bootstrap + Meyawo main styles -->
     <link rel="stylesheet" href="assets/css/meyawo.css">
 </head>
+
+<style>
+     .fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+  }
+  .fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+  }
+</style>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
 
@@ -31,6 +45,9 @@
                 </li>
                 <li class="item">
                     <a class="link" href="#experience">Experience</a>
+                </li>
+                 <li class="item">
+                    <a class="link" href="#service">Services</a>
                 </li>
                 <li class="item">
                     <a class="link" href="#portfolio">Projects</a>
@@ -60,11 +77,17 @@
     <header id="home" class="header">
         <div class="overlay"></div>
         <div class="header-content container">
-            <h1 class="header-title">
+            <!-- <h1 class="header-title">
                 <span class="up">HI!</span>
-                <span class="down">I am Anthony Gudu</span>
+                <span class="down" id="animated-name">I am Anthony Gudu</span>
+            </h1> -->
+            <h1 class="header-title">
+                <span class="up">HI! My name is Anthony Gudu</span> <span class="down" id="animated-name"></span>
+              I’m <span id="typed-role"></span><span class="cursor">|</span>
             </h1>
-            <p class="header-subtitle">FRONTEND WEB DESIGNER</p>
+
+
+            <!-- <p class="header-subtitle">FRONTEND WEB DESIGNER</p> -->
 
             <button class="btn btn-primary">Visit My Works</button>
         </div>
@@ -77,26 +100,84 @@
             <!-- about wrapper -->
             <div class="about">
                 <div class="about-img-holder">
-                    <img src="assets/imgs/man.jpg" class="about-img"
-                        alt="Anthony Gudu Landing page">
-                </div>
+                <!-- Slideshow images -->
+                <img src="assets/imgs/man1.jpg" class="about-img" id="aboutImage"
+        alt="Anthony Gudu Landing page">
+            </div>
                 <div class="about-caption">
                     <p class="section-subtitle">Who Am I ?</p>
                     <h2 class="section-title mb-3">About Me</h2>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae aliquid ad provident aut
-                        fuga animi soluta quae eos non cupiditate voluptates dolorem, doloremque quos dicta quibusdam
-                        impedit iure nemo a iste
-                        <br>culpa! Quasi quibusdam hic recusandae delectus velit officiis explicabo voluptatibus! Nemo
-                        esse similique, voluptates labore distinctio, placeat explicabo facilis molestias, blanditiis
-                        culpa iusto voluptatem ratione eligendi a, quia temporibus velit vero ipsa sint ex voluptatum
-                        expedita aliquid! Debitis, nam!
+                        Hi, I’m <strong>Anthony Gudu</strong>, a passionate <strong>Frontend Developer</strong> and aspiring 
+                        <strong>Full-Stack Engineer</strong>. I enjoy creating clean, modern, and user-friendly web applications 
+                        with a focus on responsive design and smooth user experiences. 
+                        <br><br>
+                        Currently, I’m pursuing a <strong>BSc in Computer Science</strong> at the 
+                        <strong>University of Ghana</strong>. Over the years, I’ve built projects ranging from 
+                        <em>management systems</em> to <em>portfolio websites</em>, applying technologies like 
+                        <strong>Java, Python, PHP, C#, ASP.NET MVC, HTML, CSS, and JavaScript</strong>. 
+                        <br><br>
+                        I’m also deeply interested in <strong>telecommunications, AI, and networking</strong>, 
+                        and I enjoy tackling challenges that combine problem-solving with creativity. My goal is 
+                        to grow into a well-rounded software engineer who builds impactful solutions.
                     </p>
+
                     <button class="btn-rounded btn btn-outline-primary mt-4">Download CV</button>
                 </div>
             </div><!-- end of about wrapper -->
         </div><!-- end of container -->
     </section> <!-- end of about section -->
+
+<!-- education section -->
+<section id="education" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4">Education</h2>
+    
+    <!-- University -->
+    <div class="card shadow-sm mb-4">
+      <div class="row g-0">
+        <div class="col-12 col-md-4">
+          <img src="images/university.jpg" class="img-fluid rounded-start w-100" alt="University of Ghana">
+        </div>
+        <div class="col-12 col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">BSc. Computer Science</h5>
+            <h6 class="card-subtitle mb-2 text-muted">University of Ghana | 2022 - Present</h6>
+            <p class="card-text">
+              Currently pursuing a degree in Computer Science with focus on software development, 
+              networking, and emerging technologies like AI and cloud computing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- High School -->
+    <div class="card shadow-sm mb-4">
+      <div class="row g-0">
+        <div class="col-12 col-md-4">
+          <img src="images/highschool.jpg" class="img-fluid rounded-start w-100" alt="High School">
+        </div>
+        <div class="col-12 col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">High School Certificate</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Adisadel College | 2020 - 2023</h6>
+            <p class="card-text">
+              Graduated with strong foundation in Mathematics, Economics, and ICT 
+              which built the basis for my computer science journey.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- end of education section -->
+
+
+
 
     <!-- service section -->
     <section class="section" id="service">
@@ -157,7 +238,7 @@
         </div>
     </section><!-- end of service section -->
 
-    <!-- portfolio section -->
+    <!-- projects section -->
     <section class="section" id="portfolio">
         <div class="container text-center">
             <p class="section-subtitle">What I Did ?</p>
@@ -204,83 +285,69 @@
         </div><!-- end of container -->
     </section> <!-- end of portfolio section -->
 
-    <!-- pricing section -->
-    <section class="section" id="pricing">
-        <div class="container text-center">
-            <p class="section-subtitle">How Much I Charge ?</p>
-            <h6 class="section-title mb-6">My Pricing</h6>
-            <!-- row -->
-            <div class="pricing-wrapper">
-                <div class="pricing-card">
-                    <div class="pricing-card-header">
-                        <img class="pricing-card-icon" src="assets/imgs/scooter.svg"
-                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
-                    </div>
-                    <div class="pricing-card-body">
-                        <h6 class="pricing-card-title">Free</h6>
-                        <div class="pricing-card-list">
-                            <p>accusamus reprehenderit</p>
-                            <p>provident dolorem </p>
-                            <p>quos neque</p>
-                            <p>fugiat quibusdam</p>
-                            <p><i class="ti-close"></i></p>
-                            <p><i class="ti-close"></i></p>
-                        </div>
-                    </div>
-                    <div class="pricing-card-footer">
-                        <span>$</span>
-                        <span>0.00/Month</span>
-                    </div>
-                    <a href="#" class="btn btn-primary mt-3 pricing-card-btn">Subscribe</a>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-card-header">
-                        <img class="pricing-card-icon" src="assets/imgs/shipped.svg"
-                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
-                    </div>
-                    <div class="pricing-card-body">
-                        <h6 class="pricing-card-title">Basic</h6>
-                        <div class="pricing-card-list">
-                            <p>accusamus reprehenderit</p>
-                            <p>provident dolorem </p>
-                            <p>quos neque</p>
-                            <p>fugiat quibusdam</p>
-                            <p>accusamus laboriosam</p>
-                            <p><i class="ti-close"></i></p>
-                        </div>
-                    </div>
-                    <div class="pricing-card-footer">
-                        <span>$</span>
-                        <span>9.99/Month</span>
-                    </div>
-                    <a href="#" class="btn btn-primary mt-3 pricing-card-btn">Subscribe</a>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-card-header">
-                        <img class="pricing-card-icon" src="assets/imgs/startup.svg"
-                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
-                    </div>
-                    <div class="pricing-card-body">
-                        <h6 class="pricing-card-title">Premium</h6>
-                        <div class="pricing-card-list">
-                            <p>accusamus reprehenderit</p>
-                            <p>provident dolorem </p>
-                            <p>quos neque</p>
-                            <p>fugiat quibusdam</p>
-                            <p>accusamus laboriosam</p>
-                            <p>inventore omnis</p>
-                        </div>
-                    </div>
-                    <div class="pricing-card-footer">
-                        <span>$</span>
-                        <span>99.9/Month</span>
-                    </div>
-                    <a href="#" class="btn btn-primary mt-3 pricing-card-btn">Subscribe</a>
-                </div>
+   
+   <!-- skills section -->
+<section class="section" id="skills">
+  <div class="container text-center">
+    <p class="section-subtitle">What I Do Best</p>
+    <h6 class="section-title mb-6">My Skills</h6>
 
-            </div><!-- end of pricing wrapper -->
-        </div> <!-- end of container -->
-    </section><!-- end of pricing section -->
+    <!-- row -->
+    <div class="pricing-wrapper">
+      
+      <!-- Skill Card 1 -->
+      <div class="pricing-card">
+        <div class="pricing-card-header">
+          <img class="pricing-card-icon" src="assets/imgs/html.svg" alt="HTML Icon">
+        </div>
+        <div class="pricing-card-body">
+          <h6 class="pricing-card-title">Frontend</h6>
+          <div class="pricing-card-list">
+            <p>HTML5 / CSS3 / JavaScript</p>
+            <p>React.js / Next.js</p>
+            <p>Bootstrap / Tailwind CSS</p>
+            <p>Responsive Design</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skill Card 2 -->
+      <div class="pricing-card">
+        <div class="pricing-card-header">
+          <img class="pricing-card-icon" src="assets/imgs/design.svg" alt="UI/UX Icon">
+        </div>
+        <div class="pricing-card-body">
+          <h6 class="pricing-card-title">UI/UX</h6>
+          <div class="pricing-card-list">
+            <p>Wireframing & Prototyping</p>
+            <p>Figma / Adobe XD</p>
+            <p>Modern UI Design</p>
+            <p>User-Centered Approach</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skill Card 3 -->
+      <div class="pricing-card">
+        <div class="pricing-card-header">
+          <img class="pricing-card-icon" src="assets/imgs/code.svg" alt="Backend Icon">
+        </div>
+        <div class="pricing-card-body">
+          <h6 class="pricing-card-title">Other Skills</h6>
+          <div class="pricing-card-list">
+            <p>Git & GitHub</p>
+            <p>REST APIs / JSON</p>
+            <p>Basic Node.js</p>
+            <p>Problem Solving</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end of skills wrapper -->
+  </div> <!-- end of container -->
+</section><!-- end of skills section -->
+
+    
 
     <!-- section -->
     <section class="section-sm bg-primary">
@@ -339,94 +406,91 @@
         </div> <!-- end of container -->
     </section> <!-- end of testimonial section -->
 
-    <!-- blog section -->
-    <section class="section" id="blog">
-        <!-- container -->
-        <div class="container text-center">
-            <p class="section-subtitle">Recent Posts?</p>
-            <h6 class="section-title mb-6">Blog</h6>
-            <!-- blog-wrapper -->
-            <div class="blog-card">
-                <div class="blog-card-header">
-                    <img src="assets/imgs/img-1.jpg" class="blog-card-img"
-                        alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
-                </div>
-                <div class="blog-card-body">
-                    <h5 class="blog-card-title">Consectetur adipisicing elit</h6>
 
-                        <p class="blog-card-caption">
-                            <a href="#">By: Admin</a>
-                            <a href="#"><i class="ti-heart text-danger"></i> 234</a>
-                            <a href="#"><i class="ti-comment"></i> 123</a>
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet nesciunt qui sit velit
-                            delectus voluptates, repellat ipsum culpa id deleniti. Rerum debitis facilis accusantium
-                            neque numquam mollitia modi quasi distinctio.</p>
+<!-- blog section -->
+   <!-- 
+<div class="blog-wrapper">
+    <div class="blog-card">
+        <div class="blog-card-header">
+            <img src="assets/imgs/img-2.jpg" class="blog-card-img"
+                alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+        </div>
+        <div class="blog-card-body">
+            <h5 class="blog-card-title">Explicabo illo</h5>
 
-                        <p><b>Necessitatibus nihil impedit! Ex nisi eveniet, dolor aliquid consequuntur repudiandae.</b>
-                        </p>
-                        <p>Magnam in repellat enim harum omnis aperiam! Explicabo illo, commodi, dolor blanditiis
-                            cupiditate harum nisi vero accusamus laudantium voluptatibus dolores quae obcaecati.</p>
+            <p class="blog-card-caption">
+                <a href="#">By: Admin</a>
+                <a href="#"><i class="ti-heart text-danger"></i> 456</a>
+                <a href="#"><i class="ti-comment"></i> 264</a>
+            </p>
 
-                        <a href="#" class="blog-card-link">Read more <i class="ti-angle-double-right"></i></a>
-                </div>
-            </div><!-- end of blog wrapper -->
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit excepturi laborum enim,
+                vitae ipsam atque eum, ad iusto consequuntur voluptas, esse doloribus. Perferendis porro
+                quisquam vitae exercitationem aliquid, minus eos laborum repudiandae, cumque debitis iusto
+                omnis praesentium? Laborum placeat sit adipisci illum tempore maxime, esse qui quae?
+                Molestias excepturi corporis similique doloribus. Esse vitae earum architecto nulla non
+                dolores illum at perspiciatis quod, et deleniti cupiditate reiciendis harum facere, delectus
+                eum commodi soluta distinctio sit repudiandae possimus sunt. Ipsum, rem.</p>
 
-            <!-- blog-wrapper -->
-            <div class="blog-card">
-                <div class="blog-card-header">
-                    <img src="assets/imgs/img-2.jpg" class="blog-card-img"
-                        alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
-                </div>
-                <div class="blog-card-body">
-                    <h5 class="blog-card-title">Explicabo illo</h6>
+            <a href="#" class="blog-card-link">Read more <i class="ti-angle-double-right"></i></a>
+        </div>
+    </div><!-- end of blog wrapper -->
 
-                        <p class="blog-card-caption">
-                            <a href="#">By: Admin</a>
-                            <a href="#"><i class="ti-heart text-danger"></i> 456</a>
-                            <a href="#"><i class="ti-comment"></i> 264</a>
-                        </p>
+</div><!-- end of container -->
+</section><!-- end of blog section -->
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit excepturi laborum enim,
-                            vitae ipsam atque eum, ad iusto consequuntur voluptas, esse doloribus. Perferendis porro
-                            quisquam vitae exercitationem aliquid, minus eos laborum repudiandae, cumque debitis iusto
-                            omnis praesentium? Laborum placeat sit adipisci illum tempore maxime, esse qui quae?
-                            Molestias excepturi corporis similique doloribus. Esse vitae earum architecto nulla non
-                            dolores illum at perspiciatis quod, et deleniti cupiditate reiciendis harum facere, delectus
-                            eum commodi soluta distinctio sit repudiandae possimus sunt. Ipsum, rem.</p>
 
-                        <a href="#" class="blog-card-link">Read more <i class="ti-angle-double-right"></i></a>
-                </div>
-            </div><!-- end of blog wrapper -->
 
-        </div><!-- end of container -->
-    </section><!-- end of blog section -->
+
+
 
     <!-- contact section -->
     <section class="section" id="contact">
-        <div class="container text-center">
-            <p class="section-subtitle">How can you communicate?</p>
-            <h6 class="section-title mb-5">Contact Me</h6>
-            <!-- contact form -->
-            <form action="" class="contact-form col-md-10 col-lg-8 m-auto">
-                <div class="form-row">
-                    <div class="form-group col-sm-6">
-                        <input type="text" size="50" class="form-control" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <input type="email" class="form-control" placeholder="Enter Email" requried>
-                    </div>
-                    <div class="form-group col-sm-12">
-                        <textarea name="comment" id="comment" rows="6" class="form-control"
-                            placeholder="Write Something"></textarea>
-                    </div>
-                    <div class="form-group col-sm-12 mt-3">
-                        <input type="submit" value="Send Message" class="btn btn-outline-primary rounded">
-                    </div>
-                </div>
-            </form><!-- end of contact form -->
-        </div><!-- end of container -->
-    </section><!-- end of contact section -->
+  <div class="container text-center">
+    <p class="section-subtitle">How can you communicate?</p>
+    <h6 class="section-title mb-5">Contact Me</h6>
+    
+    <!-- contact form -->
+    <form action="" class="contact-form col-md-10 col-lg-8 m-auto">
+      <div class="form-row">
+        <!-- Name -->
+        <div class="form-group col-sm-6">
+          <label for="name" class="sr-only">Name</label>
+          <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+        </div>
+        
+        <!-- Email -->
+        <div class="form-group col-sm-6">
+          <label for="email" class="sr-only">Email</label>
+          <input type="email" id="email" class="form-control" placeholder="Enter Email" required>
+        </div>
+        
+        <!-- Message -->
+        <div class="form-group col-sm-12">
+          <label for="comment" class="sr-only">Message</label>
+          <textarea name="comment" id="comment" rows="6" class="form-control"
+            placeholder="Write Something..." required></textarea>
+        </div>
+        
+        <!-- Submit Button -->
+        <div class="form-group col-sm-12 mt-3">
+          <button type="submit" class="btn btn-success btn-lg rounded-pill px-5 shadow-sm">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </div>
+      </div>
+    </form>
+    
+    <!-- Social Links -->
+    <div class="mt-4">
+      <p>Or reach me directly on:</p>
+      <a href="mailto:anthonygudu2020@gmail.com" class="mx-2 text-success"><i class="fas fa-envelope fa-lg"></i></a>
+      <a href="https://github.com/AnthonyGudu" class="mx-2 text-dark"><i class="fab fa-github fa-lg"></i></a>
+      <a href="https://www.linkedin.com" class="mx-2 text-primary"><i class="fab fa-linkedin fa-lg"></i></a>
+      <a href="https://twitter.com" class="mx-2 text-info"><i class="fab fa-twitter fa-lg"></i></a>
+    </div>
+  </div><!-- end of container -->
+</section><!-- end of contact section -->
 
     <!-- footer -->
     <div class="container">
@@ -450,12 +514,21 @@
     <!-- core  -->
     <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
     <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
 
     <!-- bootstrap 3 affix -->
     <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
     <!-- Meyawo js -->
     <script src="assets/js/meyawo.js"></script>
+
+
+
+
+
 
 </body>
 

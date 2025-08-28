@@ -12118,7 +12118,7 @@ pre .code {
 }
 
 .header-title {
-  font-size: 2.4rem;
+  font-size: 1.8rem;
   font-weight: bold;
   opacity: .8;
   color: #212529;
@@ -12232,3 +12232,25 @@ pre .code {
 .section-lg {
   padding: 100px 0 !important;
 }
+
+
+#animated-name {
+  transition: all 0.5s ease-in-out;
+  color: #4caf50; /* softer material green */
+  font-size: 50px; /* adjust size */
+}
+
+#intro-text {
+  font-size: 28px;
+  font-weight: bold;
+  color: #00e676; /* green */
+}
+
+#typed-text {
+  color: #00e676; /* green for animation text */
+}
+
+
+
+
+
