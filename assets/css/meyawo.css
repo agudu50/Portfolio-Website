@@ -12283,7 +12283,7 @@ pre .code {
 }
 
 
-<style>
+
   /* Hover effects for education cards */
   .education-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -12306,11 +12306,47 @@ pre .code {
 
   .education-card .card-body {
     transition: background-color 0.3s ease;
+    
   }
 
   .education-card:hover .card-body {
     background-color: #f8f9fa; /* light gray highlight */
   }
+
+
+
+/* Hover effects for experience cards */
+.experience-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.experience-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.experience-card img {
+  transition: transform 0.4s ease;
+}
+
+.experience-card:hover img {
+  transform: scale(1.05);
+}
+
+.experience-card .card-body {
+  transition: background-color 0.3s ease;
+}
+
+.experience-card:hover .card-body {
+  background-color: #f8f9fa; /* light gray highlight */
+}
+
+
+
+
+
 
 
 
@@ -12383,22 +12419,6 @@ pre .code {
   flex-shrink: 0;      
 }
 
-
-/* Hover effect for experience logos */
-.experience-logo {
-  overflow: hidden; /* Prevents image overflow */
-  border-top-left-radius: .25rem;
-  border-bottom-left-radius: .25rem;
-}
-
-.experience-logo img {
-  transition: transform 0.4s ease, filter 0.4s ease;
-}
-
-.experience-logo img:hover {
-  transform: scale(1.08);  /* Zoom-in effect */
-  filter: brightness(1.1); /* Slightly brighter */
-}
 
 
 
