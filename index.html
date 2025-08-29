@@ -556,37 +556,43 @@
 
 <!-- Success & Error Alerts -->
 <!-- Contact Section -->
-<section id="contact" class="mt-5">
-  <!-- Success & Error Alerts -->
-  <div id="form-messages" class="mt-3"></div>
+<section id="contact" class="py-5">
+  <div class="container text-center">
+    <!-- Subtitle and Title styled like services -->
+    <p class="section-subtitle" style="font-weight: 400; color: #6c757d;">How can you communicate?</p>
+    <h6 class="section-title mb-6" style="font-weight: 500; font-size: calc(20px + (35 - 20) * ((100vw - 300px) / (1300 - 300)));">Contact Me</h6>
 
-  <form id="contact-form" class="contact-form col-md-10 col-lg-8 m-auto">
-    <div class="form-row">
-      <!-- Name -->
-      <div class="form-group col-sm-6">
-        <input type="text" id="name" name="from_name" class="form-control" placeholder="Your Name" required>
-      </div>
+    <!-- Success & Error Alerts -->
+    <div id="form-messages" class="mt-3"></div>
 
-      <!-- Email -->
-      <div class="form-group col-sm-6">
-        <input type="email" id="email" name="from_email" class="form-control" placeholder="Enter Email" required>
-      </div>
+    <!-- Contact Form -->
+    <form id="contact-form" class="contact-form col-md-10 col-lg-8 m-auto">
+      <div class="form-row">
+        <!-- Name -->
+        <div class="form-group col-sm-6">
+          <input type="text" id="name" name="from_name" class="form-control" placeholder="Your Name" required>
+        </div>
 
-      <!-- Message -->
-      <div class="form-group col-sm-12">
-        <textarea id="comment" name="message" rows="6" class="form-control"
-          placeholder="Write Something..." required></textarea>
-      </div>
+        <!-- Email -->
+        <div class="form-group col-sm-6">
+          <input type="email" id="email" name="from_email" class="form-control" placeholder="Enter Email" required>
+        </div>
 
-      <!-- Submit Button -->
-      <div class="form-group col-sm-12 mt-3 text-center">
-        <button type="submit" class="btn btn-success btn-lg rounded-pill px-5 shadow-sm">
-          <i class="fas fa-paper-plane"></i> Send Message
-        </button>
+        <!-- Message -->
+        <div class="form-group col-sm-12">
+          <textarea id="comment" name="message" rows="6" class="form-control"
+            placeholder="Write Something..." required></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group col-sm-12 mt-3 text-center">
+          <button type="submit" class="btn btn-success btn-lg rounded-pill px-5 shadow-sm">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </div>
       </div>
-    </div>
-  </form>
-</section>
+    </form>
+
 
 
     
