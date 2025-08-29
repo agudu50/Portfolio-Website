@@ -42,7 +42,7 @@ $(document).ready(function(){
 
 
     // 🔥 Typing Animation for Roles
-    const roles = ["Frontend Developer", "Blockchain Innovator", "Problem Solver", "Problem Solver"];
+    const roles = ["Frontend Developer", "Blockchain Innovator", "Machine Learning & AI Enthusiast", "Problem Solver"];
     let roleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -68,4 +68,57 @@ $(document).ready(function(){
     }
 
     typeEffect();
+
+
+    
+
+
+// Contact Form Submission using EmailJS
+
+  document.getElementById('contact-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    emailjs.sendForm('service_zlhfoc5', 'template_u9iy82j', this)
+      .then(function () {
+        showMessage('Your message was sent successfully!', 'success');
+        document.getElementById('contact-form').reset();
+      }, function () {
+        showMessage('Oops! Something went wrong. Please try again.', 'danger');
+      });
+  });
+
+
+
+
+function showMessage(message, type) {
+  const formMessages = document.getElementById('form-messages');
+  formMessages.innerHTML = `
+    <div class="alert alert-${type} alert-dismissible fade show text-center mx-auto" 
+         role="alert" style="max-width: 500px;">
+      <span>${message}</span>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  `;
+
+  // Auto-hide after 5 seconds
+  setTimeout(() => {
+    const alertElement = formMessages.querySelector('.alert');
+    if (alertElement) {
+      // Trigger fade-out
+      alertElement.classList.remove("show"); 
+
+      // Wait for fade transition then remove from DOM
+      setTimeout(() => {
+        alertElement.remove();
+      }, 150); // Bootstrap's fade animation is ~150ms
+    }
+  }, 5000);
+}
+
+
+
+
+
+
+    
 });

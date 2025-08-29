@@ -1,17 +1,5 @@
 @charset "UTF-8";
-/*!
-=========================================================
-* Meyawo Landing page
-=========================================================
 
-* Copyright: 2019 DevCRUD (https://devcrud.com)
-* Licensed: (https://devcrud.com/licenses)
-* Coded by www.devcrud.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
 @import url("https://fonts.googleapis.com/css?family=Baloo+Paaji|Open+Sans:300,300i,400,400i,600,600i,700,700i");
 :root {
   --blue: #1e549f;
@@ -11135,8 +11123,13 @@ p {
   position: relative;
   min-height: 230px;
   border: 1px solid #dee2e6;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff;
   overflow: hidden;
   border-radius: 3px;
+
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-card .body {
@@ -11177,13 +11170,33 @@ p {
 .service-card:hover .body img.icon {
   margin-top: 5px;
   width: 45px;
+  transition: all 0.3s ease;
   margin-bottom: 15px;
+   transform: scale(0.85);
+  
 }
 
 .service-card:hover .body .subtitle {
   bottom: 7px;
   opacity: 1;
   visibility: visible;
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 20px rgba(165, 156, 202, 0.3);
+  border-radius: 4px; /* Optional for smoother look */
+}
+
+.service-card .body .subtitle {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;  /* Ensure it spans the whole card */
+  text-align: center;  /* Center text inside */
+  opacity: 0;
+  visibility: hidden;
+  padding: 8px 12px;  /* Add balanced spacing */
+  box-sizing: border-box;
+  transition: all 0.3s;
+  font-weight: 400;
 }
 
 /*/ portfolio wrapper */
@@ -12249,6 +12262,145 @@ pre .code {
 #typed-text {
   color: #00e676; /* green for animation text */
 }
+
+
+/* Logo + Name Wrapper */
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--main-green); /* use your #00ff3f color */
+}
+
+/* Logo Image */
+.logo-img {
+  width: 40px;   /* adjust size */
+  height: 40px;  /* keep square */
+  border-radius:15%; /* makes it circular */
+  margin-right: 10px; /* space between logo & name */
+}
+
+
+<style>
+  /* Hover effects for education cards */
+  .education-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .education-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .education-card img {
+    transition: transform 0.4s ease;
+  }
+
+  .education-card:hover img {
+    transform: scale(1.05);
+  }
+
+  .education-card .card-body {
+    transition: background-color 0.3s ease;
+  }
+
+  .education-card:hover .card-body {
+    background-color: #f8f9fa; /* light gray highlight */
+  }
+
+
+
+
+  /* Portfolio Card */
+.portfolio-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.portfolio-card-img {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.4s ease;
+}
+
+.portfolio-card:hover .portfolio-card-img {
+  transform: scale(1.1);
+}
+
+.portfolio-card-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.3); /* lighter transparency */
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.portfolio-card:hover .portfolio-card-overlay {
+  opacity: 1;
+}
+
+.portfolio-card-caption {
+  text-align: center;
+}
+
+.portfolio-links {
+  margin-top: 15px;
+}
+
+.portfolio-links .btn {
+  margin: 5px;
+  font-weight: 600;
+  padding: 5px 15px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.portfolio-links .btn:hover {
+  transform: translateY(-3px);
+}
+
+#form-messages .alert {
+  max-width: 500px;          /* keeps it from stretching too wide on desktop */
+  margin: 15px auto;
+  display: flex;
+  align-items: center;        
+  justify-content: flex-start; 
+  padding: 0.75rem 1rem;
+}
+
+#form-messages .alert .btn-close {
+  margin-left: auto;   /* pushes X to the right but keeps it closer */
+  flex-shrink: 0;      
+}
+
+
+/* Hover effect for experience logos */
+.experience-logo {
+  overflow: hidden; /* Prevents image overflow */
+  border-top-left-radius: .25rem;
+  border-bottom-left-radius: .25rem;
+}
+
+.experience-logo img {
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.experience-logo img:hover {
+  transform: scale(1.08);  /* Zoom-in effect */
+  filter: brightness(1.1); /* Slightly brighter */
+}
+
+
 
 
 
