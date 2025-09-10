@@ -49,6 +49,86 @@
     opacity: 1;
     transition: opacity 0.5s ease-in;
   }
+
+
+
+  /* Skills Section */
+#skills {
+  padding: 60px 0;
+  background-color: #f8f9fa;
+}
+
+#skills .section-subtitle {
+  font-size: 1.2rem;
+  color:#695aa6;
+  margin-bottom: 10px;
+}
+
+#skills .section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color:#695aa6;
+  margin-bottom: 40px;
+}
+
+/* Wrapper for cards */
+.pricing-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px; /* spacing between cards */
+}
+
+/* Skill Card */
+.pricing-card {
+  background: #fff;
+  border-radius: 20px !important; /* force rounded edges */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  padding: 25px 20px;
+  text-align: center;
+}
+
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Card header */
+.pricing-card-header {
+  margin-bottom: 20px;
+}
+
+/* Card title */
+.pricing-card-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #695aa6;
+  margin-bottom: 15px;
+}
+
+/* List */
+.pricing-card-list p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color:#695aa6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+  
+
+  
+  
+
+  
+
+
+
+  
 </style>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
@@ -252,9 +332,7 @@
 
 
 
-
-
-   <!-- service section -->
+ <!-- service section -->
 <section class="section" id="service">
     <div class="container text-center">
         <p class="section-subtitle" style="font-weight: 400;">What I Do ?</p>
@@ -338,7 +416,7 @@
       <!-- Project Card 1 -->
       <div class="col-md-4">
         <div class="portfolio-card">
-          <img src="assets/imgs/folio-1.png" class="portfolio-card-img" alt="Project 1">
+          <img src="assets/imgs/folio-1.jpg" class="portfolio-card-img" alt="Project 1">
           <div class="portfolio-card-overlay">
             <div class="portfolio-card-caption">
               <h4>Web Designing</h4>
@@ -353,7 +431,7 @@
       </div>
 
       <!-- Project Card 2 -->
-      <div class="col-md-4">
+      <!-- <div class="col-md-4">
         <div class="portfolio-card">
           <img src="assets/imgs/folio-2.jpg" class="portfolio-card-img" alt="Project 2">
           <div class="portfolio-card-overlay">
@@ -367,10 +445,10 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Project Card 3 -->
-      <div class="col-md-4">
+      <!-- <div class="col-md-4">
         <div class="portfolio-card">
           <img src="assets/imgs/folio-3.jpg" class="portfolio-card-img" alt="Project 3">
           <div class="portfolio-card-overlay">
@@ -384,7 +462,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div><!-- end of row -->
   </div><!-- end of container -->
 </section><!-- end of portfolio section -->
@@ -448,9 +526,13 @@
         </div>
       </div>
 
-    </div><!-- end of skills wrapper -->
+    </div>
+    <!-- end of skills wrapper -->
   </div> <!-- end of container -->
 </section><!-- end of skills section -->
+
+
+
 
 
     <!-- section -->
@@ -491,7 +573,7 @@
             <p class="testimonial-card-subtitle" style="font-weight: 500;">
               "Working with Anthony was a great experience. He built a modern, responsive website for our business and delivered ahead of schedule. Highly recommend him for any web development project!"
             </p>
-            <h6 class="testimonial-card-title">Sarah Johnson</h6>
+            <h6 class="testimonial-card-title">Michael Lee</h6>
             <small class="text-muted">Marketing Manager, BrightTech</small>
           </div>
         </div>
@@ -507,7 +589,7 @@
             <p class="testimonial-card-subtitle" style="font-weight: 500;">
               "Anthony is not only skilled but also very professional. He helped us design a clean and functional dashboard for our system. His attention to detail really stands out."
             </p>
-            <h6 class="testimonial-card-title">Michael Lee</h6>
+            <h6 class="testimonial-card-title">Sarah Johnson</h6>
             <small class="text-muted">Product Owner, Innovate Solutions</small>
           </div>
         </div>

@@ -116,7 +116,9 @@ function showMessage(message, type) {
 }
 
 
-
+<script>
+  feather.replace();
+</script>
 
 
 

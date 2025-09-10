@@ -11119,85 +11119,163 @@ p {
   border-radius: 100px;
 }
 
+/* Service Section Styles */
+.section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.section-subtitle {
+  font-size: 1.3rem;
+  color: #695aa6;
+  margin-bottom: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #695aa6;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Service Card Styles */
 .service-card {
   position: relative;
-  min-height: 230px;
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
-  text-align: center;
-  color: #fff;
+  min-height: 250px;
+  background: linear-gradient(145deg, #ffffff 0%, #f1f3f5 100%);
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   overflow: hidden;
-  border-radius: 3px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
 
-   transition: transform 0.3s ease, box-shadow 0.3s ease;
+.service-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .service-card .body {
-  padding: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .service-card .body img.icon {
-  margin-top: 40px;
-  width: 55px;
-  margin-bottom: 25px;
-  -webkit-transition: all, 0.3s;
-  transition: all, 0.3s;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .service-card .body img.icon {
-    -webkit-transition: none;
-    transition: none;
-  }
-}
-
-.service-card .body .subtitle {
-  position: absolute;
-  bottom: -100%;
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: all, 0.3s;
-  transition: all, 0.3s;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .service-card .body .subtitle {
-    -webkit-transition: none;
-    transition: none;
-  }
+  width: 60px;
+  height: 60px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, margin-top 0.3s ease;
 }
 
 .service-card:hover .body img.icon {
-  margin-top: 5px;
-  width: 45px;
-  transition: all 0.3s ease;
-  margin-bottom: 15px;
-   transform: scale(0.85);
-  
+  margin-top: 10px;
+  transform: scale(1.15);
 }
 
-.service-card:hover .body .subtitle {
-  bottom: 7px;
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(-5px);
-  box-shadow: 0px 8px 20px rgba(165, 156, 202, 0.3);
-  border-radius: 4px; /* Optional for smoother look */
+.service-card .body .title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #695aa6;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
 }
+
+
 
 .service-card .body .subtitle {
   position: absolute;
-  bottom: -100%;
+  bottom: 10px;
   left: 0;
-  width: 100%;  /* Ensure it spans the whole card */
-  text-align: center;  /* Center text inside */
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #495057;
+  font-weight: 400;
+  line-height: 1.5;
   opacity: 0;
   visibility: hidden;
-  padding: 8px 12px;  /* Add balanced spacing */
-  box-sizing: border-box;
-  transition: all 0.3s;
-  font-weight: 400;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
+.service-card:hover .body .subtitle {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Accessibility and Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .service-card,
+  .service-card .body img.icon,
+  .service-card .body .subtitle {
+    transition: none;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .section {
+    padding: 50px 0;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .service-card {
+    min-height: 220px;
+    margin-bottom: 20px;
+  }
+
+  .service-card .body img.icon {
+    width: 50px;
+    height: 50px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .service-card .body .title {
+    font-size: 1.4rem;
+  }
+
+  .service-card .body .subtitle {
+    font-size: 0.85rem;
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .service-card {
+    min-height: 200px;
+  }
+
+  .service-card .body .title {
+    font-size: 1.2rem;
+  }
+
+  .service-card .body .subtitle {
+    font-size: 0.8rem;
+  }
+}
+
 
 /*/ portfolio wrapper */
 .portfolio-card {
