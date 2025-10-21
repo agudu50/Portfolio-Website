@@ -27,7 +27,10 @@ $(document).ready(function(){
         "assets/imgs/man1.jpg",
         "assets/imgs/man2.jpg",
         "assets/imgs/man3.jpg",
-        "assets/imgs/man4.jpg"
+        "assets/imgs/man4.jpg",
+        "assets/imgs/man5.JPG",
+        "assets/imgs/man6.jpg",
+        "assets/imgs/man7.JPG"
     ];
 
     let index = 0;

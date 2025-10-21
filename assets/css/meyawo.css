@@ -11415,7 +11415,7 @@ p {
   -webkit-transform: translateY(-5px);
       -ms-transform: translateY(-5px);
           transform: translateY(-5px);
-  border-radius: 0 !important;
+ 
 }
 
 .pricing-wrapper .pricing-card:first-child {
@@ -12496,6 +12496,87 @@ pre .code {
   margin-left: auto;   /* pushes X to the right but keeps it closer */
   flex-shrink: 0;      
 }
+
+
+
+#contact {
+    padding: 4rem 1rem;
+  }
+
+  .section-title {
+    font-weight: 600;
+    font-size: 2rem;
+    color: #222;
+  }
+
+  .section-subtitle {
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Contact Form Styling */
+  .contact-form {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .contact-form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-control {
+    border-radius: 12px;
+    border: 1.5px solid #e0e0e0;
+    padding: 0.9rem 1.2rem;
+    font-size: 0.95rem;
+    background-color: #f8fafc;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .form-control:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+    outline: none;
+    background-color: #fff;
+  }
+
+  textarea.form-control {
+    resize: none;
+  }
+
+  /* Submit Button */
+  .btn-modern {
+    background: linear-gradient(135deg, #4f46e5, #06b6d4);
+    border: none;
+    color: white;
+    font-weight: 500;
+    border-radius: 30px;
+    padding: 0.8rem 2.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .btn-modern:hover {
+    background: linear-gradient(135deg, #4338ca, #0891b2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.2);
+  }
+
+  .btn-modern i {
+    margin-right: 8px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .contact-form {
+      padding: 1.8rem;
+    }
+  }
+
 
 
 
