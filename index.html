@@ -121,7 +121,142 @@
 
   
 
+/* .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
 
+        .container {
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #6b7280;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Skills Wrapper - Modern Grid Layout */
+        .skills-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Modern Card Styles */
+        .skill-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .skill-card-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-card-header i {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover .skill-card-header i {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .skill-card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .skill-card-list {
+            text-align: left;
+        }
+
+        .skill-card-list p {
+            font-size: 0.95rem;
+            color: #4b5563;
+            margin-bottom: 0.75rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-card-list p:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+
+        .skill-card-list i {
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .skill-card {
+                padding: 1.5rem;
+            }
+
+            .skill-card-header i {
+                font-size: 3rem;
+            }
+        } 
 
 
   
@@ -475,67 +610,65 @@
 
 
    
-<!-- skills section -->
-<section class="section" id="skills">
-  <div class="container text-center">
-    <p class="section-subtitle" style="font-weight: 400;">What I Do Best</p>
-    <h6 class="section-title mb-6">My Skills</h6>
+<!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container text-center">
+            <p class="section-subtitle">What I Do Best</p>
+            <h2 class="section-title">My Skills</h2>
 
-    <!-- row -->
-    <div class="pricing-wrapper">
+            <!-- Skills Wrapper -->
+            <div class="skills-wrapper">
+                <!-- Skill Card 1: Frontend -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <i class="fab fa-html5" style="color: #e34f26;"></i>
+                    </div>
+                    <div class="skill-card-body">
+                        <h6 class="skill-card-title">Frontend Development</h6>
+                        <div class="skill-card-list">
+                            <p><i class="fab fa-html5" style="color: #e34f26;"></i> HTML5 / <i class="fab fa-css3-alt" style="color: #1572b6;"></i> CSS3</p>
+                            <p><i class="fab fa-js-square" style="color: #f7df1e;"></i> JavaScript (ES6+)</p>
+                            <p><i class="fab fa-react" style="color: #61dafb;"></i> React.js / Next.js</p>
+                            <p><i class="fab fa-bootstrap" style="color: #563d7c;"></i> Bootstrap / <i class="fab fa-css3-alt" style="color: #38bdf8;"></i> Tailwind CSS</p>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Skill Card 1 -->
-      <div class="pricing-card">
-        <div class="pricing-card-header">
-          <i class="fab fa-html5 fa-3x" style="color:#e34f26;"></i>
-        </div>
-        <div class="pricing-card-body">
-          <h6 class="pricing-card-title">Frontend</h6>
-          <div class="pricing-card-list">
-            <p><i class="fab fa-html5" style="color:#e34f26;"></i> HTML5 / <i class="fab fa-css3-alt" style="color:#1572b6;"></i> CSS3</p>
-            <p><i class="fab fa-js" style="color:#f7df1e;"></i> JavaScript</p>
-            <p><i class="fab fa-react" style="color:#61dafb;"></i> React.js / Next.js</p>
-            <p><i class="fab fa-bootstrap" style="color:#563d7c;"></i> Bootstrap / <i class="fab fa-css3-alt" style="color:#38bdf8;"></i> Tailwind CSS</p>
-          </div>
-        </div>
-      </div>
+                <!-- Skill Card 2: UI/UX -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <i class="fas fa-pencil-ruler" style="color: #ff6f61;"></i>
+                    </div>
+                    <div class="skill-card-body">
+                        <h6 class="skill-card-title">UI/UX Design</h6>
+                        <div class="skill-card-list">
+                            <p><i class="fas fa-project-diagram" style="color: #10b981;"></i> Wireframing & Prototyping</p>
+                            <p><i class="fab fa-figma" style="color: #f24e1e;"></i> Figma / Adobe XD</p>
+                            <p><i class="fas fa-paint-brush" style="color: #8b5cf6;"></i> Modern UI Design</p>
+                            <p><i class="fas fa-users" style="color: #f59e0b;"></i> User-Centered Approach</p>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Skill Card 2 -->
-      <div class="pricing-card">
-        <div class="pricing-card-header">
-          <i class="fas fa-pencil-ruler fa-3x" style="color:#ff6f61;"></i>
-        </div>
-        <div class="pricing-card-body">
-          <h6 class="pricing-card-title">UI/UX</h6>
-          <div class="pricing-card-list">
-            <p><i class="fas fa-project-diagram"></i> Wireframing & Prototyping</p>
-            <p><i class="fab fa-figma" style="color:#f24e1e;"></i> Figma / Adobe XD</p>
-            <p><i class="fas fa-paint-brush"></i> Modern UI Design</p>
-            <p><i class="fas fa-user-friends"></i> User-Centered Approach</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Skill Card 3 -->
-      <div class="pricing-card">
-        <div class="pricing-card-header">
-          <i class="fas fa-code fa-3x" style="color:#4caf50;"></i>
-        </div>
-        <div class="pricing-card-body">
-          <h6 class="pricing-card-title">Other Skills</h6>
-          <div class="pricing-card-list">
-            <p><i class="fab fa-git-alt" style="color:#f1502f;"></i> Git & GitHub</p>
-            <p><i class="fas fa-network-wired"></i> REST APIs / JSON</p>
-            <p><i class="fab fa-node-js" style="color:#339933;"></i> Basic Node.js</p>
-            <p><i class="fas fa-lightbulb"></i> Problem Solving</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <!-- end of skills wrapper -->
-  </div> <!-- end of container -->
-</section><!-- end of skills section -->
+                <!-- Skill Card 3: Other Skills -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <i class="fas fa-code" style="color: #4caf50;"></i>
+                    </div>
+                    <div class="skill-card-body">
+                        <h6 class="skill-card-title">Additional Skills</h6>
+                        <div class="skill-card-list">
+                            <p><i class="fab fa-git-alt" style="color: #f1502f;"></i> Git & GitHub</p>
+                            <p><i class="fas fa-server" style="color: #3b82f6;"></i> REST APIs / JSON</p>
+                            <p><i class="fab fa-node-js" style="color: #339933;"></i> Basic Node.js</p>
+                            <p><i class="fas fa-lightbulb" style="color: #eab308;"></i> Problem Solving</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Skills Wrapper -->
+        </div> <!-- End of Container -->
+    </section> <!-- End of Skills Section -->
 
 
 
