@@ -12265,11 +12265,22 @@ pre .code {
   min-width: 400px;
   max-width: 400px;
   margin-right: 20px;
+  /* Reserve a fixed display box so swapping images doesn't change layout height */
+  height: 400px;
+  overflow: hidden;
+  /* keep the container corners the same as the image so scaling doesn't reveal square edges */
+  border-radius: 20px;
 }
 
 .about-img-holder .about-img {
   width: 100%;
-  margin-bottom: 15px;
+  /* Fill the reserved box and crop if needed to avoid pushing content */
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* ensure the image corners match the container and don't change on hover */
+  border-radius: 20px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-radius 0.25s ease;
 }
 
 .about-caption {
@@ -12294,6 +12305,8 @@ pre .code {
     width: 100%;
     margin: auto;
     margin-bottom: 20px;
+    /* smaller reserved height on narrow screens */
+    height: 350px;
   }
 }
 
@@ -12440,6 +12453,11 @@ pre .code {
   width: 100%;
   border-radius: 8px;
   transition: transform 0.4s ease;
+  /* Keep a consistent visual box for portfolio items to prevent content shift */
+  aspect-ratio: 16/9;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 
 .portfolio-card:hover .portfolio-card-img {
