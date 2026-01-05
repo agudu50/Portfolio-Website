@@ -1117,96 +1117,101 @@
         /* iPhone 11 Pro, iPhone X, iPhone XS (375px width) */
         @media (max-width: 414px) {
             .hero-landing {
-                padding: 30px 0 40px;
+                padding: 20px 0 20px;
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
+                overflow: hidden;
             }
 
             .hero-content {
-                padding: 0 10px;
+                padding: 0 15px;
+                justify-content: center;
+                min-height: calc(100vh - 40px);
+                min-height: calc(-webkit-fill-available - 40px);
+            }
+
+            .hero-badge {
+                display: none;
             }
 
             .hero-name {
-                margin-bottom: 8px;
+                margin-bottom: 5px;
             }
 
             .hero-name .greeting {
-                font-size: 2rem;
-                margin-bottom: 3px;
+                font-size: 1.5rem;
+                margin-bottom: 2px;
             }
 
-            .hero-name .name-line,
             .hero-name .highlight {
-                font-size: 0.9rem;
+                font-size: 1.8rem;
             }
 
             .hero-tagline {
-                font-size: 0.7rem;
-                margin-bottom: 8px;
+                font-size: 0.65rem;
+                margin-bottom: 5px;
             }
 
             .hero-typed-container {
-                font-size: 0.8rem;
-                min-height: 20px;
-                margin-bottom: 10px;
-            }
-
-            .hero-subtitle {
-                font-size: 0.55rem;
-                margin-bottom: 12px;
-            }
-
-            .hero-buttons {
-                gap: 8px;
-                margin-bottom: 12px;
-            }
-
-            .hero-btn {
-                padding: 10px 16px;
-                font-size: 0.65rem;
-                max-width: 200px;
-            }
-
-            .hero-social {
-                gap: 6px;
-                margin-bottom: 8px;
-            }
-
-            .hero-social a {
-                width: 28px;
-                height: 28px;
-                font-size: 0.7rem;
-            }
-
-            .tech-icons {
-                gap: 6px;
-                margin-bottom: 8px;
-            }
-
-            .tech-icon {
-                width: 26px;
-                height: 26px;
-                font-size: 0.75rem;
+                display: none;
             }
 
             .tech-orbit {
-                margin-bottom: 8px;
+                display: none;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 8px;
+                margin-bottom: 15px;
+            }
+
+            .hero-btn {
+                padding: 10px 20px;
+                font-size: 0.7rem;
+                max-width: 180px;
+            }
+
+            .hero-social {
+                gap: 8px;
+                margin-bottom: 15px;
+            }
+
+            .hero-social a {
+                width: 32px;
+                height: 32px;
+                font-size: 0.8rem;
             }
 
             .hero-enter-mobile {
-                margin-top: 10px !important;
+                display: block !important;
+                visibility: visible !important;
+                margin-top: 15px !important;
+            }
+
+            .hero-enter-mobile a {
+                gap: 8px;
             }
 
             .hero-enter-mobile span {
-                font-size: 0.55rem;
-                letter-spacing: 1px;
+                font-size: 0.6rem;
+                letter-spacing: 1.5px;
             }
 
             .hero-enter-mobile .arrow-circle {
-                width: 40px;
-                height: 40px;
+                width: 45px;
+                height: 45px;
+                background: rgba(169, 148, 212, 0.4);
+                border: 2px solid rgba(255, 255, 255, 0.6);
             }
 
             .hero-enter-mobile .arrow-circle i {
-                font-size: 0.85rem;
+                font-size: 1rem;
+                color: white;
+            }
+
+            .glow-orbs {
+                display: none;
             }
         }
 
