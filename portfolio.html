@@ -50,26 +50,98 @@
   }
                        
 
+  /* Enhanced Service Card Styles */
+  .service-card-enhanced {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+    border: 2px solid transparent;
+    border-radius: 20px;
+    padding: 40px 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(105, 90, 166, 0.08);
+  }
+
+  .service-card-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #695aa6, #8b7cc7, #a994d4);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .service-card-enhanced:hover {
+    border-color: #695aa6;
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(105, 90, 166, 0.25);
+  }
+
+  .service-card-enhanced:hover::before {
+    transform: scaleX(1);
+  }
+
+  .service-icon-wrapper {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .service-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #695aa6, #8b7cc7);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(105, 90, 166, 0.3);
+  }
+
   .service-card-enhanced:hover .service-icon {
-    transform: rotate(-5deg) scale(1.1);
-    border-radius: 50%;
+    transform: scale(1.15) rotate(-5deg);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(105, 90, 166, 0.4);
+  }
+
+  .service-icon::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 2px solid rgba(105, 90, 166, 0.2);
+    border-radius: 15px;
+    transition: all 0.4s ease;
   }
 
   .service-card-enhanced:hover .service-icon::after {
-    transform: rotate(15deg) scale(1);
+    inset: -8px;
+    border-color: rgba(105, 90, 166, 0.5);
+    transform: rotate(15deg);
   }
 
   .service-icon i {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #fff;
+    position: relative;
+    z-index: 2;
   }
 
   .service-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #333;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #1a1a1a;
     margin-bottom: 15px;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    letter-spacing: -0.5px;
   }
 
   .service-card-enhanced:hover .service-title {
@@ -78,10 +150,15 @@
 
   .service-description {
     font-size: 0.95rem;
-    color: #666;
-    line-height: 1.7;
+    color: #555;
+    line-height: 1.8;
     margin-bottom: 20px;
     flex-grow: 1;
+    transition: color 0.3s ease;
+  }
+
+  .service-card-enhanced:hover .service-description {
+    color: #333;
   }
 
   .service-tags {
@@ -93,36 +170,48 @@
   }
 
   .service-tags .tag {
-    background: rgba(105, 90, 166, 0.1);
+    background: linear-gradient(135deg, rgba(105, 90, 166, 0.1), rgba(139, 124, 199, 0.1));
     color: #695aa6;
-    padding: 5px 12px;
-    border-radius: 20px;
+    padding: 6px 14px;
+    border-radius: 25px;
     font-size: 0.8rem;
-    font-weight: 500;
+    font-weight: 600;
     transition: all 0.3s ease;
+    border: 1px solid rgba(105, 90, 166, 0.2);
   }
 
   .service-card-enhanced:hover .service-tags .tag {
-    background: rgba(105, 90, 166, 0.15);
+    background: linear-gradient(135deg, rgba(105, 90, 166, 0.2), rgba(139, 124, 199, 0.2));
+    border-color: rgba(105, 90, 166, 0.4);
+    transform: scale(1.05);
   }
 
   .service-link {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    color: #695aa6;
-    font-weight: 600;
+    gap: 10px;
+    color: #fff;
+    background: linear-gradient(135deg, #695aa6, #8b7cc7);
+    font-weight: 700;
     font-size: 0.95rem;
     text-decoration: none;
     transition: all 0.3s ease;
+    padding: 12px 24px;
+    border-radius: 10px;
+    align-self: center;
+    box-shadow: 0 8px 20px rgba(105, 90, 166, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
   .service-link i {
     transition: transform 0.3s ease;
+    font-size: 0.9rem;
   }
 
   .service-link:hover {
-    color: #8b7cc7;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(105, 90, 166, 0.4);
   }
 
   .service-link:hover i {
