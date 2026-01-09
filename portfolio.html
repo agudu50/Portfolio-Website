@@ -537,6 +537,31 @@
     transform: scale(1.04) translateY(-5px);
 }
 
+/* Crossfade stack for about images */
+.about-img-stack {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.about-img-stack .about-img-main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.about-img-stack .about-img-main.is-visible {
+    opacity: 1;
+}
+
 .about-img-overlay {
     position: absolute;
     top: 15px;
@@ -2360,39 +2385,7 @@
             <button class="btn btn-primary" onclick="window.location.href='#portfolio'">Visit My Works</button>
         </div>
     </header><!-- end of page header -->
-
-    <!-- Header Background Image Slideshow Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const header = document.querySelector('.header');
-            const manImages = ['man1.jpg', 'man2.jpg', 'man3.jpg', 'man5.jpg', 'man7.jpg', 'man6.jpg', 'man8.jpg'];
-            let currentIndex = 0;
-
-            // Preload all images
-            manImages.forEach(img => {
-                const preload = new Image();
-                preload.src = `assets/imgs/${img}`;
-            });
-
-            function changeHeaderBackground() {
-                // Fade out
-                header.style.transition = 'opacity 0.8s ease-in-out';
-                header.style.opacity = '0.7';
-
-                setTimeout(() => {
-                    // Change background
-                    currentIndex = (currentIndex + 1) % manImages.length;
-                    header.style.backgroundImage = `url('assets/imgs/${manImages[currentIndex]}')`;
-                    
-                    // Fade back in
-                    header.style.opacity = '1';
-                }, 800);
-            }
-
-            // Change background every 5 seconds
-            setInterval(changeHeaderBackground, 5000);
-        });
-    </script>
+    
 
     <!-- about section -->
     <section class="section modern-about-section" id="about">
@@ -2403,7 +2396,10 @@
                 <div class="col-lg-5 col-md-6 order-lg-1 order-2">
                     <div class="about-img-container">
                         <div class="about-img-frame">
-                            <img src="assets/imgs/man1.jpg" id="aboutImage" class="about-img-main fade-in" alt="Anthony Gudu - Full Stack Developer">
+                            <div class="about-img-stack">
+                                <img src="assets/imgs/man1.jpg" id="aboutImage1" class="about-img-main is-visible" alt="Anthony Gudu - Full Stack Developer">
+                                <img src="assets/imgs/man2.jpg" id="aboutImage2" class="about-img-main" alt="Anthony Gudu - Full Stack Developer">
+                            </div>
                             <div class="about-img-overlay"></div>
                             <div class="about-badge">
                                 <i class="fas fa-star"></i> Frontend Developer
@@ -2477,43 +2473,57 @@
         </section> <!-- end of about section -->
 
         <script>
-            // About image slideshow: cycles through man images with fade transitions
+            // About image slideshow: crossfade with preloading to avoid blank frames
             document.addEventListener('DOMContentLoaded', function () {
-                const imgEl = document.querySelector('#aboutImage') || document.querySelector('.about-img-main');
-                if (!imgEl) return;
+                const imgA = document.getElementById('aboutImage1');
+                const imgB = document.getElementById('aboutImage2');
+                if (!imgA || !imgB) return;
 
                 const sources = [
                     'assets/imgs/man1.jpg',
                     'assets/imgs/man2.jpg',
                     'assets/imgs/man3.jpg',
-                    'assets/imgs/man4.jpg'
+                    'assets/imgs/man4.jpg',
+                    'assets/imgs/man5.JPG',
+                    'assets/imgs/man6.jpg',
+                    'assets/imgs/man7.JPG',
+                    'assets/imgs/man8.jpg'
                 ];
 
-                // Preload images to avoid flicker
+                // Preload images
                 sources.forEach(src => { const i = new Image(); i.src = src; });
 
-                let current = 0;
+                let currentIndex = 0;
+                let showingA = true;
                 const intervalMs = 5000; // 5 seconds
-                const fadeMs = 400;      // match CSS transition
 
-                function showNext() {
-                    imgEl.classList.remove('fade-in');
-                    imgEl.classList.add('fade-out');
+                function crossfadeTo(nextIndex) {
+                    const currentImg = showingA ? imgA : imgB;
+                    const nextImg = showingA ? imgB : imgA;
+                    const nextSrc = sources[nextIndex];
 
-                    setTimeout(() => {
-                        current = (current + 1) % sources.length;
-                        imgEl.src = sources[current];
-                        imgEl.alt = `Anthony Gudu - Photo ${current + 1}`;
-                        imgEl.classList.remove('fade-out');
-                        imgEl.classList.add('fade-in');
-                    }, fadeMs);
+                    function reveal() {
+                        nextImg.classList.add('is-visible');
+                        currentImg.classList.remove('is-visible');
+                        showingA = !showingA;
+                        currentIndex = nextIndex;
+                    }
+
+                    if (nextImg.complete && nextImg.naturalWidth > 0 && (nextImg.src.includes(nextSrc))) {
+                        reveal();
+                    } else {
+                        nextImg.addEventListener('load', function handler() {
+                            nextImg.removeEventListener('load', handler);
+                            reveal();
+                        });
+                        nextImg.src = nextSrc;
+                    }
                 }
 
-                let timer = setInterval(showNext, intervalMs);
-
-                // Pause on hover, resume on leave
-                imgEl.addEventListener('mouseenter', () => { clearInterval(timer); });
-                imgEl.addEventListener('mouseleave', () => { if (!timer) timer = setInterval(showNext, intervalMs); });
+                setInterval(() => {
+                    const nextIndex = (currentIndex + 1) % sources.length;
+                    crossfadeTo(nextIndex);
+                }, intervalMs);
             });
         </script>
 
@@ -3327,8 +3337,8 @@
             </div>
             <div class="col-md-3 col-6 mb-4">
                 <div class="fun-fact-card">
-                    <div class="fun-fact-emoji"><i class="fas fa-basketball-ball"></i></div>
-                    <p class="fun-fact-text">Basketball Fan</p>
+                    <div class="fun-fact-emoji"><i class="fas fa-football-ball"></i></div>
+                    <p class="fun-fact-text">Football Fan</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 mb-4">
@@ -3730,7 +3740,6 @@
     <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
     <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/main.js"></script>
 
 
     <!-- bootstrap 3 affix -->

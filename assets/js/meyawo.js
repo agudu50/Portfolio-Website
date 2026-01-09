@@ -21,26 +21,7 @@ $(document).ready(function(){
 
 
 
-//slideshow FOR images of about 
-// List of your images
-    const images = [
-        "assets/imgs/man1.jpg",
-        // "assets/imgs/man2.jpg",
-        "assets/imgs/man3.jpg",
-        "assets/imgs/man4.jpg",
-        "assets/imgs/man5.JPG",
-        "assets/imgs/man6.jpg",
-        "assets/imgs/man7.JPG"
-    ];
 
-    let index = 0;
-    const aboutImage = document.getElementById("aboutImage");
-
-    // Function to change image every 3 seconds
-    setInterval(() => {
-        index = (index + 1) % images.length; // cycle through 0–3
-        aboutImage.src = images[index];
-    }, 4000); // 4000ms = 4 seconds
 
 
 
