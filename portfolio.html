@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -48,82 +48,7 @@
     opacity: 0;
     transition: opacity 0.5s ease-out;
   }
-  .fade-in {
-    opacity: 1;
-    transition: opacity 0.5s ease-in;
-  }
-
-  /* About Section  */
-  #about {
-    background: transparent !important;
-  }
-
-  /* Enhanced Service Cards */
-  .service-card-enhanced {
-    background: #fff;
-    border-radius: 20px;
-    padding: 35px 25px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .service-card-enhanced::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, #695aa6, #8b7cc7, #a994d4);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-  }
-
-  .service-card-enhanced:hover::before {
-    transform: scaleX(1);
-  }
-
-  .service-card-enhanced:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 25px 50px rgba(105, 90, 166, 0.2);
-  }
-
-  .service-icon-wrapper {
-    margin-bottom: 25px;
-  }
-
-  .service-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto;
-    background: linear-gradient(135deg, #695aa6 0%, #8b7cc7 100%);
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.4s ease;
-    position: relative;
-  }
-
-  .service-icon::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #695aa6 0%, #8b7cc7 100%);
-    border-radius: 20px;
-    opacity: 0.3;
-    transform: rotate(10deg) scale(0.9);
-    z-index: -1;
-    transition: all 0.4s ease;
-  }
+                       
 
   .service-card-enhanced:hover .service-icon {
     transform: rotate(-5deg) scale(1.1);
@@ -558,7 +483,7 @@
             .section-title {
                 font-size: 2rem;
             }
-
+            }
             .skill-card {
                 padding: 1.5rem;
             }
@@ -566,7 +491,350 @@
             .skill-card-header i {
                 font-size: 3rem;
             }
-        }
+        
+
+/* Modern About Section Styles */
+.modern-about-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.modern-about-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(105, 90, 166, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+/* About Image Container */
+.about-img-container {
+    animation: slideInLeft 0.8s ease;
+}
+
+.about-img-frame {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.about-img-main {
+    width: 100%;
+    max-width: 380px;
+    border-radius: 20px;
+    box-shadow: 0 25px 60px rgba(105, 90, 166, 0.2);
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.about-img-main:hover {
+    transform: scale(1.04) translateY(-5px);
+}
+
+.about-img-overlay {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: -15px;
+    bottom: -15px;
+    border: 3px solid #695aa6;
+    border-radius: 20px;
+    z-index: 1;
+    animation: moveOverlay 4s ease-in-out infinite;
+}
+
+.about-badge {
+    position: absolute;
+    bottom: -12px;
+    right: 0;
+    background: linear-gradient(135deg, #695aa6, #8b7cc7);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    box-shadow: 0 10px 30px rgba(105, 90, 166, 0.35);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 3;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveOverlay {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-8px, -8px); }
+}
+
+/* About Content Section */
+.about-content-section {
+    animation: slideInRight 0.8s ease;
+}
+
+.about-header {
+    margin-bottom: 35px;
+}
+
+.about-label {
+    display: inline-block;
+    color: #695aa6;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+}
+
+.about-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.about-tagline {
+    font-size: 1.25rem;
+    color: #8b7cc7;
+    font-weight: 500;
+    font-style: italic;
+    margin: 0;
+}
+
+/* About Text Content */
+.about-text-content {
+    margin-bottom: 35px;
+}
+
+.about-paragraph {
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.about-paragraph strong {
+    color: #333;
+    font-weight: 600;
+}
+
+/* Skills Grid */
+.about-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 35px 0;
+}
+
+.skill-badge {
+    background: rgba(105, 90, 166, 0.08);
+    border: 1px solid rgba(105, 90, 166, 0.2);
+    padding: 15px 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.skill-badge:hover {
+    background: rgba(105, 90, 166, 0.15);
+    border-color: #695aa6;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(105, 90, 166, 0.12);
+}
+
+.skill-badge i {
+    font-size: 1.2rem;
+    color: #695aa6;
+}
+
+.skill-badge span {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+/* CTA Buttons */
+.about-cta-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 35px;
+}
+
+.btn-modern-primary,
+.btn-modern-secondary {
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-modern-primary {
+    background: linear-gradient(135deg, #695aa6 0%, #8b7cc7 100%);
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(105, 90, 166, 0.3);
+}
+
+.btn-modern-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(105, 90, 166, 0.4);
+    color: #fff;
+}
+
+.btn-modern-secondary {
+    background: transparent;
+    color: #695aa6;
+    border: 2px solid #695aa6;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-modern-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #695aa6;
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.btn-modern-secondary:hover {
+    color: #fff;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(105, 90, 166, 0.2);
+}
+
+.btn-modern-secondary:hover::before {
+    left: 0;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive About Section */
+@media (max-width: 991px) {
+    .modern-about-section {
+        padding: 80px 0;
+    }
+    
+    .about-heading {
+        font-size: 2.2rem;
+    }
+    
+    .about-skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .modern-about-section {
+        padding: 60px 0;
+    }
+    
+    .about-heading {
+        font-size: 2rem;
+    }
+    
+    .about-tagline {
+        font-size: 1.1rem;
+    }
+    
+    .about-paragraph {
+        font-size: 1rem;
+        text-align: left;
+    }
+    
+    .about-cta-group {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .modern-about-section {
+        padding: 40px 0;
+    }
+    
+    .about-img-main {
+        max-width: 300px;
+    }
+    
+    .about-img-overlay {
+        max-width: 300px;
+    }
+    
+    .about-heading {
+        font-size: 1.8rem;
+    }
+    
+    .about-tagline {
+        font-size: 1rem;
+    }
+    
+    .about-paragraph {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .about-skills-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .skill-badge {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .about-cta-group {
+        flex-direction: column;
+    }
+    
+    .btn-modern-primary,
+    .btn-modern-secondary {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 24px;
+    }
+}
 
 /* Statistics Counter Section */
 .stats-section {
@@ -746,6 +1014,64 @@
     padding: 30px;
 }
 
+/* Certificate Image Protection */
+.cert-image-wrapper {
+    position: relative;
+    display: inline-block;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.cert-protected-image {
+    pointer-events: none;
+    max-height: 500px;
+    transition: transform 0.3s ease;
+    border: 3px solid #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+}
+
+.cert-image-wrapper.zoomed .cert-protected-image {
+    transform: scale(1.5);
+    cursor: zoom-out;
+    max-height: 700px;
+    pointer-events: auto;
+}
+
+/* Watermark Overlay */
+.cert-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    font-size: 3rem;
+    font-weight: bold;
+    color: rgba(105, 90, 166, 0.08);
+    pointer-events: none;
+    z-index: 10;
+    white-space: nowrap;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    user-select: none;
+}
+
+/* Prevent text selection overlay */
+.cert-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    z-index: 5;
+}
+
 #certModalImage {
     border: 3px solid #f0f0f0;
     border-radius: 10px;
@@ -804,6 +1130,413 @@
     font-weight: 500;
 }
 
+/* Testimonial Carousel Styles */
+#testimonialCarousel {
+    padding: 40px 0;
+    position: relative;
+}
+
+.testimonial-carousel-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow: 0 10px 40px rgba(105, 90, 166, 0.15);
+    position: relative;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.testimonial-carousel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(105, 90, 166, 0.25);
+}
+
+.testimonial-quote-icon {
+    font-size: 3rem;
+    color: rgba(105, 90, 166, 0.15);
+    margin-bottom: 20px;
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    font-style: italic;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.testimonial-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid #695aa6;
+    object-fit: cover;
+}
+
+.testimonial-author-info {
+    text-align: left;
+}
+
+.testimonial-author-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #695aa6;
+    margin-bottom: 5px;
+}
+
+.testimonial-author-position {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #695aa6, #8b7cc7);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.carousel-control-prev {
+    left: -80px;
+}
+
+.carousel-control-next {
+    right: -80px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background: linear-gradient(135deg, #5a4d91, #7a6bb8);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-control-icon {
+    width: auto;
+    height: auto;
+}
+
+.carousel-control-icon i {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    margin-bottom: -30px;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(105, 90, 166, 0.3);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators .active {
+    width: 30px;
+    border-radius: 6px;
+    background-color: #695aa6;
+}
+
+/* Carousel Animation */
+.carousel-item {
+    transition: transform 0.8s ease-in-out;
+}
+
+/* Responsive Testimonial Carousel */
+@media (max-width: 1200px) {
+    .carousel-control-prev {
+        left: 10px;
+    }
+    
+    .carousel-control-next {
+        right: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonial-carousel-card {
+        padding: 30px 20px;
+        min-height: 300px;
+    }
+    
+    .testimonial-text {
+        font-size: 1rem;
+    }
+    
+    .testimonial-quote-icon {
+        font-size: 2rem;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .carousel-control-icon i {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Reduce spacing on project card columns with mt-4 on mobile */
+    #portfolio .col-md-4.mt-4 {
+        margin-top: 1rem !important; /* Reduce from mt-4 (1.5rem) to 1rem */
+    }
+    
+    .testimonial-carousel-card {
+        padding: 25px 15px;
+    }
+    
+    .testimonial-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .testimonial-author {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .testimonial-author-info {
+        text-align: center;
+    }
+    
+    .carousel-control-prev {
+        left: 5px;
+    }
+    
+    .carousel-control-next {
+        right: 5px;
+    }
+}
+
+/* Modern Contact Form Section */
+.contact-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Contact Form Card */
+.contact-form-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow: 0 10px 50px rgba(105, 90, 166, 0.12);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-form-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #695aa6, #8b7cc7, #a994d4);
+}
+
+/* Modern Form Floating Groups */
+.form-floating-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control-modern {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #e0e0e0;
+    padding: 15px 0 10px 0;
+    font-size: 1rem;
+    color: #333;
+    transition: all 0.3s ease;
+    outline: none;
+    font-family: inherit;
+}
+
+.form-control-modern:focus {
+    border-bottom-color: #695aa6;
+    background: transparent;
+    box-shadow: none;
+}
+
+.form-control-modern::placeholder {
+    color: transparent;
+}
+
+.form-floating-group label {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: #999;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-floating-group label i {
+    font-size: 0.9rem;
+    color: #695aa6;
+}
+
+.form-control-modern:focus + label,
+.form-control-modern:not(:placeholder-shown) + label {
+    bottom: 30px;
+    font-size: 0.85rem;
+    color: #695aa6;
+    font-weight: 500;
+}
+
+/* Animated Underline */
+.form-underline {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(90deg, #695aa6, #8b7cc7);
+    transition: width 0.4s ease;
+}
+
+.form-floating-group .form-control-modern:focus ~ .form-underline {
+    width: 100%;
+}
+
+/* Modern Submit Button */
+.btn-submit-modern {
+    background: linear-gradient(135deg, #695aa6 0%, #8b7cc7 100%);
+    color: #fff;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 50px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(105, 90, 166, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-submit-modern:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(105, 90, 166, 0.4);
+}
+
+.btn-submit-modern:active {
+    transform: translateY(-1px);
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.form-note {
+    color: #999;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* Responsive Contact Form */
+@media (max-width: 768px) {
+    .contact-form-card {
+        padding: 35px 25px;
+    }
+    
+    .form-control-modern {
+        padding: 12px 0 8px 0;
+        font-size: 0.95rem;
+    }
+    
+    .form-floating-group label {
+        font-size: 0.95rem;
+    }
+    
+    .contact-section {
+        padding: 60px 0;
+    }
+    
+    .section-description {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-form-card {
+        padding: 25px 15px;
+        box-shadow: 0 5px 20px rgba(105, 90, 166, 0.1);
+    }
+    
+    .form-control-modern {
+        padding: 10px 0 6px 0;
+        font-size: 0.9rem;
+    }
+    
+    .form-floating-group label {
+        font-size: 0.85rem;
+    }
+    
+    .btn-submit-modern {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+    
+    .contact-section {
+        padding: 40px 0;
+        min-height: auto;
+    }
+}
+
 /* Fun Facts Section */
 .fun-facts-section {
     padding: 60px 0;
@@ -828,11 +1561,322 @@
     margin-bottom: 15px;
 }
 
+.fun-fact-emoji i {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 4px rgba(102, 126, 234, 0.3));
+    transition: all 0.3s ease;
+}
+
+.fun-fact-card:hover .fun-fact-emoji i {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 4px 8px rgba(102, 126, 234, 0.5));
+}
+
+/* Individual icon colors */
+.fa-coffee {
+    background: linear-gradient(135deg, #D4A574 0%, #8B4513 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+.fa-gamepad {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+.fa-book {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+.fa-music {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+.fa-globe {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+.fa-basketball-ball {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+.fa-lightbulb {
+    background: linear-gradient(135deg, #ffd200 0%, #f7971e 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+.fa-rocket {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
 .fun-fact-text {
     font-weight: 600;
     color: #695aa6;
     font-size: 1rem;
     margin: 0;
+}
+
+/* Modern Footer Styles */
+.footer-modern {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+    padding-top: 0;
+}
+
+.footer-content {
+    padding: 60px 0 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Footer Brand */
+.footer-brand {
+    animation: fadeInUp 0.8s ease;
+}
+
+.footer-brand-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-brand-desc {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* Footer Social Links */
+.footer-social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(105, 90, 166, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(105, 90, 166, 0.4);
+}
+
+.footer-social-link:hover {
+    background: linear-gradient(135deg, #695aa6, #8b7cc7);
+    border-color: #8b7cc7;
+    transform: translateY(-5px);
+    color: #fff;
+}
+
+/* Footer Sections */
+.footer-heading {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.footer-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 3px;
+    background: linear-gradient(90deg, #695aa6, #8b7cc7);
+    border-radius: 2px;
+}
+
+/* Footer Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-links a::before {
+    content: 'â†’';
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #8b7cc7;
+    padding-left: 10px;
+}
+
+.footer-links a:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Footer Contact Info */
+.footer-contact-info p {
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-contact-info i {
+    color: #8b7cc7;
+    width: 20px;
+    text-align: center;
+}
+
+.footer-contact-info a {
+    color: #8b7cc7;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-contact-info a:hover {
+    color: #a994d4;
+    text-decoration: underline;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 30px 0;
+}
+
+.footer-copyright {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-copyright strong {
+    color: #fff;
+}
+
+.footer-credit {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+    .footer-content {
+        padding: 40px 0 30px;
+    }
+    
+    .footer-brand-name {
+        font-size: 1.3rem;
+    }
+    
+    .footer-heading {
+        margin-bottom: 15px;
+    }
+    
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-content {
+        padding: 30px 0 20px;
+    }
+    
+    .footer-brand-name {
+        font-size: 1.2rem;
+    }
+    
+    .footer-brand-desc {
+        font-size: 0.85rem;
+    }
+    
+    .footer-heading {
+        font-size: 1rem;
+        margin-top: 20px;
+    }
+    
+    .footer-links a,
+    .footer-contact-info p {
+        font-size: 0.85rem;
+    }
+    
+    .footer-social-links {
+        gap: 10px;
+    }
+    
+    .footer-social-link {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+    
+    .footer-bottom {
+        padding: 20px 0;
+    }
+    
+    .footer-copyright,
+    .footer-credit {
+        font-size: 0.8rem;
+    }
 }
 
 /* Back to Top Button */
@@ -867,6 +1911,8 @@
     box-shadow: 0 10px 30px rgba(105, 90, 166, 0.5);
     color: #fff;
 }
+
+
 
 /* Enhanced Portfolio Cards Animation */
 .portfolio-card {
@@ -1315,45 +2361,161 @@
         </div>
     </header><!-- end of page header -->
 
+    <!-- Header Background Image Slideshow Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('.header');
+            const manImages = ['man1.jpg', 'man2.jpg', 'man3.jpg', 'man5.jpg', 'man7.jpg', 'man6.jpg', 'man8.jpg'];
+            let currentIndex = 0;
+
+            // Preload all images
+            manImages.forEach(img => {
+                const preload = new Image();
+                preload.src = `assets/imgs/${img}`;
+            });
+
+            function changeHeaderBackground() {
+                // Fade out
+                header.style.transition = 'opacity 0.8s ease-in-out';
+                header.style.opacity = '0.7';
+
+                setTimeout(() => {
+                    // Change background
+                    currentIndex = (currentIndex + 1) % manImages.length;
+                    header.style.backgroundImage = `url('assets/imgs/${manImages[currentIndex]}')`;
+                    
+                    // Fade back in
+                    header.style.opacity = '1';
+                }, 800);
+            }
+
+            // Change background every 5 seconds
+            setInterval(changeHeaderBackground, 5000);
+        });
+    </script>
+
     <!-- about section -->
-    <section class="section pt-0" id="about">
-        <!-- container -->
-        <div class="container text-center">
+    <section class="section modern-about-section" id="about">
+        <div class="container">
             <!-- about wrapper -->
-            <div class="about">
-                <div class="about-img-holder">
-                <!-- Slideshow images -->
-                <img src="assets/imgs/man1.jpg" class="about-img" id="aboutImage"
-                 alt="Anthony Gudu Landing page">
-            </div>
-                <div class="about-caption">
-                    <p class="section-subtitle" style="font-weight: 600; color: #695aa6;">Who Am I ?</p>
-                    <h2 class="section-title mb-3" style="color: #695aa6;">About Me</h2>
-                    <p style="font-weight: 400;">
-                        Hi, I’m <strong>Anthony Gudu</strong>, a passionate <strong>Frontend Developer</strong> and aspiring 
-                        <strong>Full-Stack Engineer</strong>. I enjoy creating clean, modern, and user-friendly web applications 
-                        with a focus on responsive design and smooth user experiences. 
-                        <br><br>
-                        Currently, I’m pursuing a <strong>BSc in Computer Science</strong> at the 
-                        <strong>University of Ghana</strong>. Over the years, I’ve built projects ranging from 
-                        <em>management systems</em> to <em>portfolio websites</em>, applying technologies like 
-                        <strong>Java, Python, PHP, C#, ASP.NET MVC, HTML, CSS, and JavaScript</strong>. 
-                        <br><br>
-                        I’m also deeply interested in <strong>telecommunications, AI, and networking</strong>, 
-                        and I enjoy tackling challenges that combine problem-solving with creativity. My goal is 
-                        to grow into a well-rounded software engineer who builds impactful solutions.
-                    </p>
-
-                   <a href="https://drive.google.com/file/d/1Tuy2rwlVcQYi7xBqAHYfwWJ5rV72_Ho4/view?usp=sharing" 
-                        target="_blank" 
-                        class="btn-rounded btn btn-outline-primary mt-4">
-                        Download CV
-                    </a>
-
+            <div class="row align-items-center g-5">
+                <!-- About Image Column -->
+                <div class="col-lg-5 col-md-6 order-lg-1 order-2">
+                    <div class="about-img-container">
+                        <div class="about-img-frame">
+                            <img src="assets/imgs/man1.jpg" id="aboutImage" class="about-img-main fade-in" alt="Anthony Gudu - Full Stack Developer">
+                            <div class="about-img-overlay"></div>
+                            <div class="about-badge">
+                                <i class="fas fa-star"></i> Frontend Developer
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div><!-- end of about wrapper -->
-        </div><!-- end of container -->
-    </section> <!-- end of about section -->
+
+                <!-- About Content Column -->
+                <div class="col-lg-7 col-md-6 order-lg-2 order-1">
+                    <div class="about-content-section">
+                        <div class="about-header">
+                            <span class="about-label">
+                                <i class="fas fa-user-circle"></i> Who Am I?
+                            </span>
+                            <h2 class="about-heading">About Me</h2>
+                            <p class="about-tagline">Passionate Developer | Creative Problem Solver</p>
+                        </div>
+                        <!-- About Text Content -->
+                        <div class="about-text-content">
+                            <p class="about-paragraph">
+                                Hi, I'm <strong>Anthony Gudu</strong>, a passionate <strong>Frontend Developer</strong> and aspiring <strong>Full-Stack Engineer</strong>. I enjoy creating clean, modern, and user-friendly web applications with a focus on responsive design and smooth user experiences.
+                            </p>
+
+                            <p class="about-paragraph">
+                                Currently, I'm pursuing a <strong>BSc in Computer Science</strong> at the <strong>University of Ghana</strong>. Over the years, I've built diverse projects ranging from management systems to interactive portfolio websites, applying technologies like <strong>Java, Python, PHP, C#, HTML, CSS, and JavaScript</strong>.
+                            </p>
+
+                            <p class="about-paragraph">
+                                I'm deeply interested in <strong>AI, telecommunications, and networking</strong>, and I love tackling challenges that blend problem-solving with creativity. My goal is to become a well-rounded software engineer who builds impactful, scalable solutions.
+                            </p>
+                        </div>
+
+                        <!-- Skills Grid -->
+                        <div class="about-skills-grid">
+                            <div class="skill-badge">
+                                <i class="fas fa-code"></i>
+                                <span>Clean Code</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Responsive Design</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fas fa-bolt"></i>
+                                <span>Fast Performance</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fas fa-brain"></i>
+                                <span>Problem Solving</span>
+                            </div>
+                        </div>
+
+                        <!-- CTA Buttons -->
+                        <div class="about-cta-group">
+                            <a href="https://drive.google.com/file/d/1Tuy2rwlVcQYi7xBqAHYfwWJ5rV72_Ho4/view?usp=sharing" 
+                               target="_blank" 
+                               class="btn-modern-primary">
+                                <i class="fas fa-download"></i>
+                                <span>Download CV</span>
+                            </a>
+                            <a href="#contact" class="btn-modern-secondary">
+                                <i class="fas fa-envelope"></i>
+                                <span>Get In Touch</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section> <!-- end of about section -->
+
+        <script>
+            // About image slideshow: cycles through man images with fade transitions
+            document.addEventListener('DOMContentLoaded', function () {
+                const imgEl = document.querySelector('#aboutImage') || document.querySelector('.about-img-main');
+                if (!imgEl) return;
+
+                const sources = [
+                    'assets/imgs/man1.jpg',
+                    'assets/imgs/man2.jpg',
+                    'assets/imgs/man3.jpg',
+                    'assets/imgs/man4.jpg'
+                ];
+
+                // Preload images to avoid flicker
+                sources.forEach(src => { const i = new Image(); i.src = src; });
+
+                let current = 0;
+                const intervalMs = 5000; // 5 seconds
+                const fadeMs = 400;      // match CSS transition
+
+                function showNext() {
+                    imgEl.classList.remove('fade-in');
+                    imgEl.classList.add('fade-out');
+
+                    setTimeout(() => {
+                        current = (current + 1) % sources.length;
+                        imgEl.src = sources[current];
+                        imgEl.alt = `Anthony Gudu - Photo ${current + 1}`;
+                        imgEl.classList.remove('fade-out');
+                        imgEl.classList.add('fade-in');
+                    }, fadeMs);
+                }
+
+                let timer = setInterval(showNext, intervalMs);
+
+                // Pause on hover, resume on leave
+                imgEl.addEventListener('mouseenter', () => { clearInterval(timer); });
+                imgEl.addEventListener('mouseleave', () => { if (!timer) timer = setInterval(showNext, intervalMs); });
+            });
+        </script>
 
 <!-- Statistics Counter Section -->
 <section class="section stats-section" id="stats">
@@ -1476,7 +2638,7 @@
           <div class="card-body h-100 d-flex flex-column justify-content-center">
             <h5 class="card-title">Software Engineer Intern</h5>
             <h6 class="card-subtitle mb-2 text-muted">
-              Unique Insurance Company Ltd | June 2024 – August 2024
+              Unique Insurance Company Ltd | June 2024 â€“ August 2024
             </h6>
             <p class="card-text" style="font-weight: 500;">
               Contributed to software development tasks, debugging, and testing 
@@ -1507,7 +2669,7 @@
           <div class="card-body h-100 d-flex flex-column justify-content-center">
             <h5 class="card-title">Customer Service Intern</h5>
             <h6 class="card-subtitle mb-2 text-muted">
-              NewGas Cylinder Marketing Ltd | November 2025 – December 2025
+              NewGas Cylinder Marketing Ltd | November 2025 â€“ December 2025
             </h6>
             <p class="card-text" style="font-weight: 500;">
               Assisted customers with inquiries, resolved issues, confirmed and onboarded new clients on our platform.
@@ -1795,10 +2957,11 @@
         </div>
       </div>
 
+      
       <!-- Project Card 4 -->
-      <div class="col-md-4">
+      <div class="col-md-4 mt-4">
         <div class="portfolio-card">
-          <img src="assets/imgs/project-placeholder-1.jpg" class="portfolio-card-img" alt="Project 4">
+          <img src="assets/imgs/sikabaasally.png" class="portfolio-card-img" alt="Project 4">
           <div class="portfolio-card-overlay">
             <div class="portfolio-card-caption">
               <h4>E-Commerce Store</h4>
@@ -1813,13 +2976,13 @@
       </div>
 
       <!-- Project Card 5 -->
-      <div class="col-md-4">
+      <div class="col-md-4 mt-4">
         <div class="portfolio-card">
-          <img src="assets/imgs/project-placeholder-2.jpg" class="portfolio-card-img" alt="Project 5">
+          <img src="assets/imgs/currency-converter.png" class="portfolio-card-img" alt="Project 5">
           <div class="portfolio-card-overlay">
             <div class="portfolio-card-caption">
               <h4>Task Manager App</h4>
-              <p class="font-weight-normal">Category: Productivity</p>
+              <p class="font-weight-normal">Category: Finance</p>
               <div class="portfolio-links">
                 <a href="#" target="_blank" class="btn btn-sm btn-outline-light">View Code</a>
                 <a href="#" target="_blank" class="btn btn-sm btn-light">Live Demo</a>
@@ -1830,9 +2993,9 @@
       </div>
 
       <!-- Project Card 6 -->
-      <div class="col-md-4">
+      <div class="col-md-4 mt-4">
         <div class="portfolio-card">
-          <img src="assets/imgs/project-placeholder-3.jpg" class="portfolio-card-img" alt="Project 6">
+          <img src="assets/imgs/event-pay.png" class="portfolio-card-img" alt="Project 6">
           <div class="portfolio-card-overlay">
             <div class="portfolio-card-caption">
               <h4>Blog Platform</h4>
@@ -1873,27 +3036,22 @@
                             <div class="skill-item">
                                 <i class="fab fa-html5" style="color: #e34f26;"></i>
                                 <span>HTML5</span>
-                                <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
                             </div>
                             <div class="skill-item">
                                 <i class="fab fa-css3-alt" style="color: #1572b6;"></i>
                                 <span>CSS3 / Sass</span>
-                                <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
                             </div>
                             <div class="skill-item">
                                 <i class="fab fa-js-square" style="color: #f7df1e;"></i>
                                 <span>JavaScript (ES6+)</span>
-                                <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
                             </div>
                             <div class="skill-item">
                                 <i class="fab fa-react" style="color: #61dafb;"></i>
                                 <span>React.js / Next.js</span>
-                                <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
                             </div>
                             <div class="skill-item">
                                 <i class="fab fa-bootstrap" style="color: #563d7c;"></i>
                                 <span>Bootstrap / Tailwind</span>
-                                <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
                             </div>
                         </div>
                     </div>
@@ -1912,27 +3070,22 @@
                             <div class="skill-item">
                                 <i class="fab fa-python" style="color: #3776ab;"></i>
                                 <span>Python</span>
-                                <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
                             </div>
                             <div class="skill-item">
                                 <i class="fab fa-java" style="color: #007396;"></i>
                                 <span>Java</span>
-                                <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
                             </div>
                             <div class="skill-item">
                                 <i class="fab fa-php" style="color: #777bb4;"></i>
                                 <span>PHP</span>
-                                <div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div></div>
                             </div>
                             <div class="skill-item">
                                 <i class="fas fa-database" style="color: #336791;"></i>
                                 <span>MySQL / PostgreSQL</span>
-                                <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
                             </div>
                             <div class="skill-item">
                                 <i class="fab fa-node-js" style="color: #339933;"></i>
                                 <span>Node.js</span>
-                                <div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div>
                             </div>
                         </div>
                     </div>
@@ -1951,27 +3104,22 @@
                             <div class="skill-item">
                                 <i class="fab fa-git-alt" style="color: #f1502f;"></i>
                                 <span>Git & GitHub</span>
-                                <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
                             </div>
                             <div class="skill-item">
                                 <i class="fab fa-figma" style="color: #f24e1e;"></i>
                                 <span>Figma / Adobe XD</span>
-                                <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
                             </div>
                             <div class="skill-item">
                                 <i class="fas fa-terminal" style="color: #333;"></i>
                                 <span>Command Line</span>
-                                <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
                             </div>
                             <div class="skill-item">
                                 <i class="fas fa-server" style="color: #3b82f6;"></i>
                                 <span>REST APIs</span>
-                                <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
                             </div>
                             <div class="skill-item">
                                 <i class="fas fa-lightbulb" style="color: #eab308;"></i>
                                 <span>Problem Solving</span>
-                                <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
                             </div>
                         </div>
                     </div>
@@ -1991,66 +3139,66 @@
             <!-- Certificate 1 -->
             <div class="col-md-4 mb-4">
                 <div class="cert-card" data-bs-toggle="modal" data-bs-target="#certModal" 
-                     data-cert-title="Web Development Fundamentals"
-                     data-cert-issuer="Coursera"
-                     data-cert-date="2024"
-                     data-cert-image="assets/imgs/certificates/web-dev-cert.jpg"
+                     data-cert-title="Professional Foundation Course"
+                     data-cert-issuer="ALX Ghana"
+                     data-cert-date="2025"
+                     data-cert-image="assets/imgs/certificates/professional-foundations-certificate-anthony-gudu.png"
                      data-cert-link="#">
-                    <div class="cert-badge"><i class="fas fa-eye"></i> View</div>
+                    <div class="cert-badge"><i class="fas fa-lock"></i> View Only</div>
                     <div class="cert-icon">
-                        <i class="fas fa-certificate"></i>
+                        <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <h5 class="cert-title">Web Development Fundamentals</h5>
-                    <p class="cert-issuer">Coursera</p>
-                    <span class="cert-date">2024</span>
+                    <h5 class="cert-title">Professional Foundation Course</h5>
+                    <p class="cert-issuer">ALX Ghana</p>
+                    <span class="cert-date">2025</span>
                 </div>
             </div>
 
             <!-- Certificate 2 -->
             <div class="col-md-4 mb-4">
                 <div class="cert-card" data-bs-toggle="modal" data-bs-target="#certModal"
-                     data-cert-title="React.js Essentials"
-                     data-cert-issuer="Udemy"
-                     data-cert-date="2024"
-                     data-cert-image="assets/imgs/certificates/react-cert.jpg"
+                     data-cert-title="Google Developer's Group"
+                     data-cert-issuer="Academic City"
+                     data-cert-date="2025"
+                     data-cert-image="assets/imgs/certificates/Anthony Gudu.jpg"
                      data-cert-link="#">
-                    <div class="cert-badge"><i class="fas fa-eye"></i> View</div>
+                    <div class="cert-badge"><i class="fas fa-lock"></i> View Only</div>
                     <div class="cert-icon">
-                        <i class="fab fa-react"></i>
+                        <i class="fab fa-google"></i>
                     </div>
-                    <h5 class="cert-title">React.js Essentials</h5>
-                    <p class="cert-issuer">Udemy</p>
-                    <span class="cert-date">2024</span>
+                    <h5 class="cert-title">Google Developer's Group</h5>
+                    <p class="cert-issuer">Academic City</p>
+                    <span class="cert-date">2025</span>
                 </div>
             </div>
 
             <!-- Certificate 3 -->
             <div class="col-md-4 mb-4">
                 <div class="cert-card" data-bs-toggle="modal" data-bs-target="#certModal"
-                     data-cert-title="Python Programming"
-                     data-cert-issuer="University of Ghana"
-                     data-cert-date="2023"
-                     data-cert-image="assets/imgs/certificates/python-cert.jpg"
+                     data-cert-title="Teens In AI"
+                     data-cert-issuer="Teens In AI Ghana"
+                     data-cert-date="2025"
+                     data-cert-image="assets/imgs/certificates/teens-ai-cert.jpg"
                      data-cert-link="#">
-                    <div class="cert-badge"><i class="fas fa-eye"></i> View</div>
+                    <div class="cert-badge"><i class="fas fa-lock"></i> View Only</div>
                     <div class="cert-icon">
-                        <i class="fab fa-python"></i>
+                        <i class="fas fa-robot"></i>
                     </div>
-                    <h5 class="cert-title">Python Programming</h5>
-                    <p class="cert-issuer">University of Ghana</p>
-                    <span class="cert-date">2023</span>
+                    <h5 class="cert-title"> Teens In AI</h5>
+                    <p class="cert-issuer">Teens In AI Ghana</p>
+                    <span class="cert-date">2025</span>
                 </div>
             </div>
 
-            <!-- Certificate 4 -->
-            <div class="col-md-4 mb-4">
+            <!--Certificate 4-->
+            <!-- <div class="col-md-4 mb-4">
                 <div class="cert-card" data-bs-toggle="modal" data-bs-target="#certModal"
                      data-cert-title="Git & Version Control"
                      data-cert-issuer="LinkedIn Learning"
                      data-cert-date="2024"
                      data-cert-image="assets/imgs/certificates/git-cert.jpg"
                      data-cert-link="#">
-                    <div class="cert-badge"><i class="fas fa-eye"></i> View</div>
+                    <div class="cert-badge"><i class="fas fa-lock"></i> View Only</div>
                     <div class="cert-icon">
                         <i class="fab fa-git-alt"></i>
                     </div>
@@ -2058,17 +3206,17 @@
                     <p class="cert-issuer">LinkedIn Learning</p>
                     <span class="cert-date">2024</span>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Certificate 5 -->
-            <div class="col-md-4 mb-4">
+            <!-- <div class="col-md-4 mb-4">
                 <div class="cert-card" data-bs-toggle="modal" data-bs-target="#certModal"
                      data-cert-title="Database Management"
                      data-cert-issuer="University of Ghana"
                      data-cert-date="2023"
                      data-cert-image="assets/imgs/certificates/database-cert.jpg"
                      data-cert-link="#">
-                    <div class="cert-badge"><i class="fas fa-eye"></i> View</div>
+                    <div class="cert-badge"><i class="fas fa-lock"></i> View Only</div>
                     <div class="cert-icon">
                         <i class="fas fa-database"></i>
                     </div>
@@ -2076,17 +3224,17 @@
                     <p class="cert-issuer">University of Ghana</p>
                     <span class="cert-date">2023</span>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Certificate 6 -->
-            <div class="col-md-4 mb-4">
+            <!-- <div class="col-md-4 mb-4">
                 <div class="cert-card" data-bs-toggle="modal" data-bs-target="#certModal"
                      data-cert-title="Dean's Honor List"
                      data-cert-issuer="University of Ghana"
                      data-cert-date="2023"
                      data-cert-image="assets/imgs/certificates/deans-list.jpg"
                      data-cert-link="#">
-                    <div class="cert-badge"><i class="fas fa-eye"></i> View</div>
+                    <div class="cert-badge"><i class="fas fa-lock"></i> View Only</div>
                     <div class="cert-icon">
                         <i class="fas fa-award"></i>
                     </div>
@@ -2095,7 +3243,7 @@
                     <span class="cert-date">2023</span>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </section>
 <!-- End of Certifications Section -->
@@ -2108,20 +3256,31 @@
                 <h5 class="modal-title" id="certModalLabel">Certificate</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body text-center">
-                <img id="certModalImage" src="" alt="Certificate" class="img-fluid rounded mb-3" style="max-height: 500px; width: 100%; object-fit: contain;">
+            <div class="modal-body text-center" id="certModalBody">
+                <div class="cert-image-wrapper">
+                    <div class="cert-watermark">ANTHONY GUDU</div>
+                    <img id="certModalImage" src="" alt="Certificate" class="img-fluid rounded mb-3 cert-protected-image" 
+                         style="max-height: 500px; width: 100%; object-fit: contain;"
+                         oncontextmenu="return false;" 
+                         ondragstart="return false;"
+                         onmousedown="return false;"
+                         draggable="false">
+                </div>
                 <div class="cert-modal-details">
                     <h4 id="certModalTitle" class="mb-2"></h4>
                     <p id="certModalIssuer" class="text-muted mb-1"></p>
                     <span id="certModalDate" class="badge bg-primary"></span>
                 </div>
+                <p class="text-muted mt-3" style="font-size: 0.85rem;">
+                    <i class="fas fa-lock"></i> This certificate is view-only and cannot be downloaded for security purposes.
+                </p>
             </div>
             <div class="modal-footer justify-content-center">
-                <a id="certModalLink" href="#" target="_blank" class="btn btn-primary">
-                    <i class="fas fa-external-link-alt"></i> View Original
-                </a>
-                <a id="certModalDownload" href="#" download class="btn btn-outline-primary">
-                    <i class="fas fa-download"></i> Download
+                <button type="button" class="btn btn-primary" id="certZoomBtn">
+                    <i class="fas fa-search-plus"></i> Zoom In
+                </button>
+                <a id="certModalLink" href="#" target="_blank" class="btn btn-outline-primary" style="display: none;">
+                    <i class="fas fa-external-link-alt"></i> Verify Certificate
                 </a>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
@@ -2138,49 +3297,49 @@
         <div class="row">
             <div class="col-md-3 col-6 mb-4">
                 <div class="fun-fact-card">
-                    <div class="fun-fact-emoji">☕</div>
+                    <div class="fun-fact-emoji"><i class="fas fa-coffee"></i></div>
                     <p class="fun-fact-text">Coffee Enthusiast</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 mb-4">
                 <div class="fun-fact-card">
-                    <div class="fun-fact-emoji">🎮</div>
+                    <div class="fun-fact-emoji"><i class="fas fa-gamepad"></i></div>
                     <p class="fun-fact-text">Gamer at Heart</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 mb-4">
                 <div class="fun-fact-card">
-                    <div class="fun-fact-emoji">📚</div>
+                    <div class="fun-fact-emoji"><i class="fas fa-book"></i></div>
                     <p class="fun-fact-text">Lifelong Learner</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 mb-4">
                 <div class="fun-fact-card">
-                    <div class="fun-fact-emoji">🎵</div>
+                    <div class="fun-fact-emoji"><i class="fas fa-music"></i></div>
                     <p class="fun-fact-text">Music Lover</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 mb-4">
                 <div class="fun-fact-card">
-                    <div class="fun-fact-emoji">🌍</div>
+                    <div class="fun-fact-emoji"><i class="fas fa-globe"></i></div>
                     <p class="fun-fact-text">Love Exploring</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 mb-4">
                 <div class="fun-fact-card">
-                    <div class="fun-fact-emoji">🏀</div>
+                    <div class="fun-fact-emoji"><i class="fas fa-basketball-ball"></i></div>
                     <p class="fun-fact-text">Basketball Fan</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 mb-4">
                 <div class="fun-fact-card">
-                    <div class="fun-fact-emoji">💡</div>
+                    <div class="fun-fact-emoji"><i class="fas fa-lightbulb"></i></div>
                     <p class="fun-fact-text">Problem Solver</p>
                 </div>
             </div>
             <div class="col-md-3 col-6 mb-4">
                 <div class="fun-fact-card">
-                    <div class="fun-fact-emoji">🚀</div>
+                    <div class="fun-fact-emoji"><i class="fas fa-rocket"></i></div>
                     <p class="fun-fact-text">Tech Enthusiast</p>
                 </div>
             </div>
@@ -2215,40 +3374,126 @@
     <p class="section-subtitle" style="font-weight: 400; color: #695aa6;">What Clients Say About Me</p>
     <h6 class="section-title mb-6" style="color: #695aa6;">Testimonials</h6>
 
-    <!-- row -->
-    <div class="row">
-      <div class="col-md-6">
-        <div class="testimonial-card">
-          <div class="testimonial-card-img-holder">
-            <img src="assets/imgs/avatar2.jpg" class="testimonial-card-img"
-              alt="Client testimonial photo">
+    <!-- Testimonial Carousel -->
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+      <!-- Carousel Indicators -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      </div>
+
+      <!-- Carousel Inner -->
+      <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="testimonial-carousel-card">
+                <div class="testimonial-quote-icon">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="testimonial-text">
+                  "Working with Anthony was a great experience. He built a modern, responsive website for our business and delivered ahead of schedule. Highly recommend him for any web development project!"
+                </p>
+                <div class="testimonial-author">
+                  <img src="assets/imgs/avatar2.jpg" alt="Michael Lee" class="testimonial-avatar">
+                  <div class="testimonial-author-info">
+                    <h6 class="testimonial-author-name">Michael Lee</h6>
+                    <small class="testimonial-author-position">Marketing Manager, BrightTech</small>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="testimonial-card-body">
-            <p class="testimonial-card-subtitle" style="font-weight: 500;">
-              "Working with Anthony was a great experience. He built a modern, responsive website for our business and delivered ahead of schedule. Highly recommend him for any web development project!"
-            </p>
-            <h6 class="testimonial-card-title">Michael Lee</h6>
-            <small class="text-muted">Marketing Manager, BrightTech</small>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="testimonial-carousel-card">
+                <div class="testimonial-quote-icon">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="testimonial-text">
+                  "Anthony is not only skilled but also very professional. He helped us design a clean and functional dashboard for our system. His attention to detail really stands out."
+                </p>
+                <div class="testimonial-author">
+                  <img src="assets/imgs/avatar3.jpg" alt="Sarah Johnson" class="testimonial-avatar">
+                  <div class="testimonial-author-info">
+                    <h6 class="testimonial-author-name">Sarah Johnson</h6>
+                    <small class="testimonial-author-position">Product Owner, Innovate Solutions</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="testimonial-carousel-card">
+                <div class="testimonial-quote-icon">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="testimonial-text">
+                  "Anthony delivered exceptional results on our e-commerce platform. His coding skills are top-notch, and he was always available to answer questions. A true professional!"
+                </p>
+                <div class="testimonial-author">
+                  <img src="assets/imgs/avatar2.jpg" alt="David Chen" class="testimonial-avatar">
+                  <div class="testimonial-author-info">
+                    <h6 class="testimonial-author-name">David Chen</h6>
+                    <small class="testimonial-author-position">CEO, ShopHub</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="testimonial-carousel-card">
+                <div class="testimonial-quote-icon">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="testimonial-text">
+                  "I've worked with many developers, but Anthony stands out for his creativity and problem-solving abilities. He turned our complex requirements into an elegant solution."
+                </p>
+                <div class="testimonial-author">
+                  <img src="assets/imgs/avatar3.jpg" alt="Emily Rodriguez" class="testimonial-avatar">
+                  <div class="testimonial-author-info">
+                    <h6 class="testimonial-author-name">Emily Rodriguez</h6>
+                    <small class="testimonial-author-position">Tech Lead, DataFlow Systems</small>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="col-md-6">
-        <div class="testimonial-card">
-          <div class="testimonial-card-img-holder">
-            <img src="assets/imgs/avatar3.jpg" class="testimonial-card-img"
-              alt="Client testimonial photo">
-          </div>
-          <div class="testimonial-card-body">
-            <p class="testimonial-card-subtitle" style="font-weight: 500;">
-              "Anthony is not only skilled but also very professional. He helped us design a clean and functional dashboard for our system. His attention to detail really stands out."
-            </p>
-            <h6 class="testimonial-card-title">Sarah Johnson</h6>
-            <small class="text-muted">Product Owner, Innovate Solutions</small>
-          </div>
-        </div>
-      </div>
+      <!-- Carousel Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-icon" aria-hidden="true">
+          <i class="fas fa-chevron-left"></i>
+        </span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-control-icon" aria-hidden="true">
+          <i class="fas fa-chevron-right"></i>
+        </span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
+    <!-- End of Testimonial Carousel -->
   </div> <!-- end of container -->
 </section> <!-- end of testimonial section -->
 
@@ -2281,7 +3526,8 @@
 
             <a href="#" class="blog-card-link">Read more <i class="ti-angle-double-right"></i></a>
         </div>
-    </div><!-- end of blog wrapper -->
+    </div>
+    <!-- end of blog wrapper -->
 
 </div><!-- end of container -->
 </section><!-- end of blog section -->  
@@ -2294,39 +3540,71 @@
 
 
   <!-- Contact Section -->
-<section id="contact"  class="py-5">
-  <div class="container text-center">
-    <p class="section-subtitle" style="font-weight: 400; color: #695aa6;">How can you communicate?</p>
-    <h6 class="section-title mb-6" style="color: #695aa6;">Contact Me</h6>
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="section-subtitle" style="font-weight: 400; color: #695aa6;">Get In Touch</p>
+      <h6 class="section-title" style="color: #695aa6;">Contact Me</h6>
+      <p class="section-description">Have a question or project in mind? Let's connect and create something amazing together!</p>
+    </div>
 
-    <div id="form-messages" class="mt-3"></div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <!-- Contact Form Card -->
+        <div class="contact-form-card">
+          <div id="form-messages" class="mt-3"></div>
 
-    <form id="contact-form" class="contact-form col-md-10 col-lg-8 m-auto">
-      <div class="form-row">
-        <!-- Name -->
-        <div class="form-group col-sm-6 mb-3">
-          <input type="text" id="name" name="from_name" class="form-control" placeholder="Your Name" required>
-        </div>
+          <form id="contact-form" class="modern-contact-form">
+            <!-- Name Field -->
+            <div class="form-floating-group mb-4">
+              <input type="text" id="name" name="from_name" class="form-control-modern" placeholder="Your Name" required>
+              <label for="name">
+                <i class="fas fa-user"></i> Your Name
+              </label>
+              <div class="form-underline"></div>
+            </div>
 
-        <!-- Email -->
-        <div class="form-group col-sm-6 mb-3">
-          <input type="email" id="email" name="from_email" class="form-control" placeholder="Enter Email" required>
-        </div>
+            <!-- Email Field -->
+            <div class="form-floating-group mb-4">
+              <input type="email" id="email" name="from_email" class="form-control-modern" placeholder="your@email.com" required>
+              <label for="email">
+                <i class="fas fa-envelope"></i> Your Email
+              </label>
+              <div class="form-underline"></div>
+            </div>
 
-        <!-- Message -->
-        <div class="form-group col-sm-12 mb-3">
-          <textarea id="comment" name="message" rows="6" class="form-control"
-            placeholder="Write Something..." required></textarea>
-        </div>
+            <!-- Subject Field -->
+            <div class="form-floating-group mb-4">
+              <input type="text" id="subject" name="subject" class="form-control-modern" placeholder="Project Topic" required>
+              <label for="subject">
+                <i class="fas fa-heading"></i> Subject
+              </label>
+              <div class="form-underline"></div>
+            </div>
 
-        <!-- Submit Button -->
-        <div class="form-group col-sm-12 mt-3 text-center">
-          <button type="submit" class="btn btn-modern shadow-sm">
-            <i class="fas fa-paper-plane"></i> Send Message
-          </button>
+            <!-- Message Field -->
+            <div class="form-floating-group mb-4">
+              <textarea id="comment" name="message" rows="5" class="form-control-modern" placeholder="Tell me about your project..." required></textarea>
+              <label for="comment">
+                <i class="fas fa-message"></i> Your Message
+              </label>
+              <div class="form-underline"></div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center mt-5">
+              <button type="submit" class="btn-submit-modern">
+                <span class="btn-text">
+                  <i class="fas fa-paper-plane"></i> Send Message
+                </span>
+                <span class="btn-shine"></span>
+              </button>
+              <p class="form-note mt-3">I'll get back to you as soon as possible</p>
+            </div>
+          </form>
         </div>
       </div>
-    </form>
+    </div>
   </div>
 </section>
 
@@ -2354,23 +3632,99 @@
 </section><!-- end of contact section -->
 
     <!-- footer -->
-    <div class="container ">
-        <footer class="footer">
-            <p class="mb-0">Copyright
-                <script>document.write(new Date().getFullYear())</script> &copy; <a
-                    href="http://www.devcrud.com">DevTony</a> <a
-                    href="https://themewagon.com"></a>
-            </p>
-            <!-- <div class="social-links text-right m-auto ml-sm-auto">
-                <a href="javascript:void(0)" class="link"><i class="ti-facebook"></i></a>
-                <a href="javascript:void(0)" class="link"><i class="ti-twitter-alt"></i></a>
-                <a href="javascript:void(0)" class="link"><i class="ti-google"></i></a>
-                <a href="javascript:void(0)" class="link"><i class="ti-pinterest-alt"></i></a>
-                <a href="javascript:void(0)" class="link"><i class="ti-instagram"></i></a>
-                <a href="javascript:void(0)" class="link"><i class="ti-rss"></i></a>
-            </div> -->
-        </footer>
-    </div> <!-- end of page footer -->
+    <footer class="footer-modern">
+        <!-- Main Footer Content -->
+        <div class="footer-content">
+            <div class="container">
+                <div class="row">
+                    <!-- Brand Section -->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                        <div class="footer-brand">
+                            <h5 class="footer-brand-name">
+                                <i class="fas fa-code" style="color: #8b7cc7;"></i> Anthony Gudu
+                            </h5>
+                            <p class="footer-brand-desc">Full-Stack Developer | UI/UX Designer | Problem Solver</p>
+                            <div class="footer-social-links">
+                                <a href="mailto:anthonygudu2020@gmail.com" class="footer-social-link" title="Email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                                <a href="https://github.com/agudu50" class="footer-social-link" title="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com" class="footer-social-link" title="LinkedIn">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://twitter.com" class="footer-social-link" title="Twitter">
+                                    <i class="fab fa-x-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                        <h6 class="footer-heading">Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#portfolio">Projects</a></li>
+                            <li><a href="#skills">Skills</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Services -->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                        <h6 class="footer-heading">Services</h6>
+                        <ul class="footer-links">
+                            <li><a href="#service">Frontend Development</a></li>
+                            <li><a href="#service">Backend Development</a></li>
+                            <li><a href="#service">UI/UX Design</a></li>
+                            <li><a href="#service">Graphic Design</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="col-lg-3 col-md-6">
+                        <h6 class="footer-heading">Get In Touch</h6>
+                        <div class="footer-contact-info">
+                            <p>
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:anthonygudu2020@gmail.com">anthonygudu2020@gmail.com</a>
+                            </p>
+                            <p>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Accra, Ghana</span>
+                            </p>
+                            <p>
+                                <i class="fas fa-clock"></i>
+                                <span>Available for Projects</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="footer-copyright mb-0">
+                            &copy; <script>document.write(new Date().getFullYear())</script> 
+                            <strong>Anthony Gudu</strong>. All rights reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                        <p class="footer-credit mb-0">
+                            Designed & Built with <i class="fas fa-heart" style="color: #ff4757;"></i> by Anthony Gudu
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- core  -->
     <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
@@ -2392,85 +3746,6 @@
 </a>
 
 <!-- Counter Animation Script -->
-<script>
-// Counter Animation
-const counters = document.querySelectorAll('.stat-number');
-const speed = 200;
-
-const animateCounter = () => {
-    counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const increment = target / speed;
-
-        if (count < target) {
-            counter.innerText = Math.ceil(count + increment);
-            setTimeout(animateCounter, 10);
-        } else {
-            counter.innerText = target + '+';
-        }
-    });
-};
-
-// Trigger counter when visible
-const statsSection = document.getElementById('stats');
-let hasAnimated = false;
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !hasAnimated) {
-            animateCounter();
-            hasAnimated = true;
-        }
-    });
-}, { threshold: 0.5 });
-
-if (statsSection) {
-    observer.observe(statsSection);
-}
-
-// Back to Top Button
-const backToTopBtn = document.getElementById('back-to-top');
-
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-        backToTopBtn.classList.add('show');
-    } else {
-        backToTopBtn.classList.remove('show');
-    }
-});
-
-// Certificate Modal Functionality
-const certModal = document.getElementById('certModal');
-if (certModal) {
-    certModal.addEventListener('show.bs.modal', function (event) {
-        const button = event.relatedTarget;
-        
-        // Extract data attributes
-        const title = button.getAttribute('data-cert-title');
-        const issuer = button.getAttribute('data-cert-issuer');
-        const date = button.getAttribute('data-cert-date');
-        const image = button.getAttribute('data-cert-image');
-        const link = button.getAttribute('data-cert-link');
-        
-        // Update modal content
-        document.getElementById('certModalLabel').textContent = title;
-        document.getElementById('certModalTitle').textContent = title;
-        document.getElementById('certModalIssuer').textContent = 'Issued by: ' + issuer;
-        document.getElementById('certModalDate').textContent = date;
-        document.getElementById('certModalImage').src = image;
-        document.getElementById('certModalImage').alt = title + ' Certificate';
-        document.getElementById('certModalLink').href = link;
-        document.getElementById('certModalDownload').href = image;
-        
-        // Handle image load error (show placeholder)
-        document.getElementById('certModalImage').onerror = function() {
-            this.src = 'assets/imgs/certificate-placeholder.png';
-            this.alt = 'Certificate image coming soon';
-        };
-    });
-}
-</script>
 
 <!-- Bootstrap 5 JS for Modal -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

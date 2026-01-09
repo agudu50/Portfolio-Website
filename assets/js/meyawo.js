@@ -25,7 +25,7 @@ $(document).ready(function(){
 // List of your images
     const images = [
         "assets/imgs/man1.jpg",
-        "assets/imgs/man2.jpg",
+        // "assets/imgs/man2.jpg",
         "assets/imgs/man3.jpg",
         "assets/imgs/man4.jpg",
         "assets/imgs/man5.JPG",
@@ -40,11 +40,11 @@ $(document).ready(function(){
     setInterval(() => {
         index = (index + 1) % images.length; // cycle through 0–3
         aboutImage.src = images[index];
-    }, 3000); // 3000ms = 3 seconds
+    }, 4000); // 4000ms = 4 seconds
 
 
 
-    // 🔥 Typing Animation for Roles
+// Typing Effect for Roles
     const roles = ["Frontend Developer", "Blockchain Innovator", "Machine Learning & AI Enthusiast", "Problem Solver"];
     let roleIndex = 0;
     let charIndex = 0;
@@ -110,13 +110,168 @@ function showMessage(message, type) {
       // Trigger fade-out
       alertElement.classList.remove("show"); 
 
-      // Wait for fade transition then remove from DOM
+      
       setTimeout(() => {
         alertElement.remove();
-      }, 150); // Bootstrap's fade animation is ~150ms
+      }, 150); 
     }
   }, 5000);
 }
+
+
+// Counter Animation
+const counters = document.querySelectorAll('.stat-number');
+const speed = 200;
+
+const animateCounter = () => {
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = target / speed;
+
+        if (count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(animateCounter, 10);
+        } else {
+            counter.innerText = target + '+';
+        }
+    });
+};
+
+// Trigger counter when visible
+const statsSection = document.getElementById('stats');
+let hasAnimated = false;
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !hasAnimated) {
+            animateCounter();
+            hasAnimated = true;
+        }
+    });
+}, { threshold: 0.5 });
+
+if (statsSection) {
+    observer.observe(statsSection);
+}
+
+// Testimonial Carousel Auto-play with Enhanced Controls
+const testimonialCarousel = document.getElementById('testimonialCarousel');
+if (testimonialCarousel) {
+    // Initialize Bootstrap carousel with auto-play
+    const carousel = new bootstrap.Carousel(testimonialCarousel, {
+        interval: 6000, // Change slide every 6 seconds
+        wrap: true, // Loop continuously
+        touch: true, // Enable touch swipe on mobile
+        pause: 'hover' // Pause on hover
+    });
+    
+    // Optional: Add custom timer indicator
+    let carouselTimer;
+    
+    // Start carousel automatically
+    carousel.cycle();
+    
+    // Pause on hover for better UX
+    testimonialCarousel.addEventListener('mouseenter', () => {
+        carousel.pause();
+    });
+    
+    testimonialCarousel.addEventListener('mouseleave', () => {
+        carousel.cycle();
+    });
+}
+
+// Back to Top Button
+const backToTopBtn = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('show');
+    } else {
+        backToTopBtn.classList.remove('show');
+    }
+});
+
+// Certificate Modal Functionality
+const certModal = document.getElementById('certModal');
+if (certModal) {
+    certModal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+        
+        // Extract data attributes
+        const title = button.getAttribute('data-cert-title');
+        const issuer = button.getAttribute('data-cert-issuer');
+        const date = button.getAttribute('data-cert-date');
+        const image = button.getAttribute('data-cert-image');
+        const link = button.getAttribute('data-cert-link');
+        
+        // Update modal content
+        document.getElementById('certModalLabel').textContent = title;
+        document.getElementById('certModalTitle').textContent = title;
+        document.getElementById('certModalIssuer').textContent = 'Issued by: ' + issuer;
+        document.getElementById('certModalDate').textContent = date;
+        document.getElementById('certModalImage').src = image;
+        document.getElementById('certModalImage').alt = title + ' Certificate';
+        
+        // Show verify link only if it exists and is not '#'
+        const modalLink = document.getElementById('certModalLink');
+        if (link && link !== '#') {
+            modalLink.href = link;
+            modalLink.style.display = 'inline-block';
+        } else {
+            modalLink.style.display = 'none';
+        }
+        
+        // Handle image load error (show placeholder)
+        document.getElementById('certModalImage').onerror = function() {
+            this.src = 'assets/imgs/certificate-placeholder.png';
+            this.alt = 'Certificate image coming soon';
+        };
+        
+        // Reset zoom state
+        const wrapper = document.querySelector('.cert-image-wrapper');
+        if (wrapper) wrapper.classList.remove('zoomed');
+        const zoomBtn = document.getElementById('certZoomBtn');
+        if (zoomBtn) {
+            zoomBtn.innerHTML = '<i class="fas fa-search-plus"></i> Zoom In';
+        }
+    });
+    
+    // Zoom functionality
+    const zoomBtn = document.getElementById('certZoomBtn');
+    if (zoomBtn) {
+        zoomBtn.addEventListener('click', function() {
+            const wrapper = document.querySelector('.cert-image-wrapper');
+            if (wrapper.classList.contains('zoomed')) {
+                wrapper.classList.remove('zoomed');
+                this.innerHTML = '<i class="fas fa-search-plus"></i> Zoom In';
+            } else {
+                wrapper.classList.add('zoomed');
+                this.innerHTML = '<i class="fas fa-search-minus"></i> Zoom Out';
+            }
+        });
+    }
+}
+
+// Additional protection: Disable right-click and keyboard shortcuts on certificate images
+document.addEventListener('contextmenu', function(e) {
+    if (e.target.classList.contains('cert-protected-image')) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    // Prevent Ctrl+S, Ctrl+Shift+S (save)
+    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+        const modal = document.getElementById('certModal');
+        if (modal && modal.classList.contains('show')) {
+            e.preventDefault();
+            return false;
+        }
+    }
+});
 
 
 
