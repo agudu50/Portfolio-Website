@@ -9,6 +9,11 @@
     <title>Anthony Gudu | Welcome</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/imgs/favicon.png">
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" as="image" href="assets/imgs/man1.jpg" fetchpriority="high">
     <!-- Font Awesome 6.5.1 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts -->
@@ -25,6 +30,39 @@
             font-family: 'Poppins', sans-serif;
             overflow: hidden;
             background: #0a0a0f;
+        }
+
+        /* Defer heavy animations until page is ready */
+        .hero-bg-animated,
+        .orb,
+        .shooting-star,
+        .particle,
+        .shape {
+            animation-play-state: paused;
+        }
+
+        body.animations-ready .hero-bg-animated,
+        body.animations-ready .orb,
+        body.animations-ready .shooting-star,
+        body.animations-ready .particle,
+        body.animations-ready .shape {
+            animation-play-state: running;
+        }
+
+        /* Respect reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+
+            .shooting-stars,
+            .hero-particles,
+            .glow-orbs,
+            .hero-bg-animated {
+                display: none !important;
+            }
         }
 
         /* ===== ENHANCED LANDING PAGE ===== */
@@ -1217,19 +1255,19 @@
 
         <!-- Background Image Slideshow -->
         <div class="hero-bg-slideshow">
-            <div class="hero-bg-slide active" style="background-image: url('assets/imgs/man1.jpg');"></div>
-            <div class="hero-bg-slide" style="background-image: url('assets/imgs/man2.jpg');"></div>
-            <div class="hero-bg-slide" style="background-image: url('assets/imgs/man3.jpg');"></div>
-            <div class="hero-bg-slide" style="background-image: url('assets/imgs/man6.jpg');"></div>
-            <div class="hero-bg-slide" style="background-image: url('assets/imgs/man7.JPG');"></div>
-            <div class="hero-bg-slide" style="background-image: url('assets/imgs/man8.jpg');"></div>
-            <div class="hero-bg-slide" style="background-image: url('assets/imgs/man9.jpg');"></div>
-            <div class="hero-bg-slide" style="background-image: url('assets/imgs/man11.jpg');"></div>
-            <div class="hero-bg-slide" style="background-image: url('assets/imgs/man12.jpg');"></div>
-            <div class="hero-bg-slide" style="background-image: url('assets/imgs/man13.jpg');"></div>
-            <div class="hero-bg-slide" style="background-image: url('assets/imgs/man14.jpg');"></div>
-            <div class="hero-bg-slide" style="background-image: url('assets/imgs/man15.jpg');"></div>
-            <div class="hero-bg-slide" style="background-image: url('assets/imgs/man16.jpg');"></div>
+            <div class="hero-bg-slide active" data-bg="assets/imgs/man1.jpg" style="background-image: url('assets/imgs/man1.jpg');"></div>
+            <div class="hero-bg-slide" data-bg="assets/imgs/man2.jpg"></div>
+            <div class="hero-bg-slide" data-bg="assets/imgs/man3.jpg"></div>
+            <div class="hero-bg-slide" data-bg="assets/imgs/man6.jpg"></div>
+            <div class="hero-bg-slide" data-bg="assets/imgs/man7.JPG"></div>
+            <div class="hero-bg-slide" data-bg="assets/imgs/man8.jpg"></div>
+            <div class="hero-bg-slide" data-bg="assets/imgs/man9.jpg"></div>
+            <div class="hero-bg-slide" data-bg="assets/imgs/man11.jpg"></div>
+            <div class="hero-bg-slide" data-bg="assets/imgs/man12.jpg"></div>
+            <div class="hero-bg-slide" data-bg="assets/imgs/man13.jpg"></div>
+            <div class="hero-bg-slide" data-bg="assets/imgs/man14.jpg"></div>
+            <div class="hero-bg-slide" data-bg="assets/imgs/man15.jpg"></div>
+            <div class="hero-bg-slide" data-bg="assets/imgs/man16.jpg"></div>
             
         </div>
         
@@ -1380,6 +1418,14 @@
     </section>
 
     <script>
+        // Defer non-essential animations until the browser is idle
+        const enableAnimations = () => document.body.classList.add('animations-ready');
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(enableAnimations, { timeout: 1500 });
+        } else {
+            window.setTimeout(enableAnimations, 800);
+        }
+
         // Hero Background Slideshow
         const heroSlides = document.querySelectorAll('.hero-bg-slide');
         const heroIndicators = document.querySelectorAll('.hero-indicator');
@@ -1388,12 +1434,22 @@
         const totalSlides = heroSlides.length;
         let slideInterval;
 
+        function applySlideBackground(slide) {
+            if (!slide) return;
+            const bg = slide.dataset.bg;
+            if (bg && slide.dataset.loaded !== 'true') {
+                slide.style.backgroundImage = `url('${bg}')`;
+                slide.dataset.loaded = 'true';
+            }
+        }
+
         function goToSlide(index) {
             heroSlides.forEach(slide => slide.classList.remove('active'));
             heroIndicators.forEach(indicator => indicator.classList.remove('active'));
             
             currentSlide = index;
             if (heroSlides[currentSlide]) {
+                applySlideBackground(heroSlides[currentSlide]);
                 heroSlides[currentSlide].classList.add('active');
             }
             if (heroIndicators[currentSlide]) {
@@ -1419,6 +1475,7 @@
         }
 
         if (heroSlides.length > 0) {
+            applySlideBackground(heroSlides[0]);
             startSlideshow();
             
             heroIndicators.forEach((indicator, index) => {
@@ -1428,6 +1485,16 @@
                     startSlideshow();
                 });
             });
+
+            const lazyLoadSlides = () => {
+                heroSlides.forEach(slide => applySlideBackground(slide));
+            };
+
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(lazyLoadSlides, { timeout: 3000 });
+            } else {
+                setTimeout(lazyLoadSlides, 2000);
+            }
         }
 
         // Enhanced Typing Effect

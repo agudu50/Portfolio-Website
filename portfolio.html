@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/imgs/favicon.png">
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://code.jquery.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,15 +28,32 @@
     <!-- Bootstrap + Meyawo main styles -->
     <link rel="stylesheet" href="assets/css/meyawo.css">
 
+    <style>
+      /* Defer animations until idle to speed initial render */
+      body:not(.animations-ready) * {
+        animation-play-state: paused !important;
+      }
+
+      /* Respect reduced motion preferences */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+
 
 <!-- EmailJS SDK v4 -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 <script type="text/javascript">
-  (function(){
+  window.addEventListener('DOMContentLoaded', function () {
+      if (!window.emailjs) return;
       emailjs.init({
         publicKey: "TzXuy0P9EpzJMMxnB",
       });
-  })();
+  });
 </script>
 
 
@@ -46,7 +67,7 @@
     <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
         <div class="container">
            <a class="logo" href="#">
-                <img src="assets/imgs/favicon.png" alt="Logo" class="logo-img">
+                <img src="assets/imgs/favicon.png" alt="Logo" class="logo-img" loading="eager" decoding="async" fetchpriority="high">
                 <span class="logo-text">Anthony Gudu</span>
             </a>
             <ul class="nav">
@@ -116,8 +137,8 @@
                     <div class="about-img-container">
                         <div class="about-img-frame">
                             <div class="about-img-stack">
-                                <img src="assets/imgs/man1.jpg" id="aboutImage1" class="about-img-main is-visible" alt="Anthony Gudu - Full Stack Developer">
-                                <img src="assets/imgs/man2.jpg" id="aboutImage2" class="about-img-main" alt="Anthony Gudu - Full Stack Developer">
+                                <img src="assets/imgs/man1.jpg" id="aboutImage1" class="about-img-main is-visible" alt="Anthony Gudu - Full Stack Developer" loading="lazy" decoding="async">
+                                <img src="assets/imgs/man2.jpg" id="aboutImage2" class="about-img-main" alt="Anthony Gudu - Full Stack Developer" loading="lazy" decoding="async">
                             </div>
                             <div class="about-img-overlay"></div>
                             <div class="about-badge">
@@ -174,12 +195,13 @@
 
                         <!-- CTA Buttons -->
                         <div class="about-cta-group">
-                            <a href="https://drive.google.com/file/d/1Tuy2rwlVcQYi7xBqAHYfwWJ5rV72_Ho4/view?usp=sharing" 
-                               target="_blank" 
-                               class="btn-modern-primary">
-                                <i class="fas fa-download"></i>
-                                <span>Download CV</span>
-                            </a>
+                          <a href="#" 
+                             class="btn-modern-primary"
+                             data-bs-toggle="modal" 
+                             data-bs-target="#cvPreviewModal">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Preview CV</span>
+                          </a>
                             <a href="#contact" class="btn-modern-secondary">
                                 <i class="fas fa-envelope"></i>
                                 <span>Get In Touch</span>
@@ -190,6 +212,38 @@
             </div>
         </div>
         </section> <!-- end of about section -->
+
+        <!-- CV Preview Modal -->
+        <div class="modal fade" id="cvPreviewModal" tabindex="-1" aria-labelledby="cvPreviewModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="cvPreviewModalLabel">CV Preview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body p-0">
+                <div class="ratio" style="--bs-aspect-ratio: 141%;">
+                  <iframe
+                    title="Anthony Gudu CV Preview"
+                    src="https://drive.google.com/file/d/1uHKWabvED6cVxMd4s3ETWMcooxIpsusL/preview"
+                    loading="lazy"
+                    allow="autoplay"
+                    style="border: 0; width: 100%; height: 100%;"
+                  ></iframe>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <a
+                  href="https://drive.google.com/uc?export=download&id=1uHKWabvED6cVxMd4s3ETWMcooxIpsusL"
+                  class="btn btn-primary"
+                >
+                  <i class="fas fa-download"></i> Download CV
+                </a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <script>
             // About image slideshow: crossfade with preloading to avoid blank frames
@@ -306,7 +360,7 @@
     <div class="card shadow-sm mb-4 education-card">
       <div class="row g-0">
         <div class="col-12 col-md-4">
-          <img src="assets/imgs/ug-legon-2.jpg" class="img-fluid rounded-start w-100" alt="University of Ghana">
+          <img src="assets/imgs/ug-legon-2.jpg" class="img-fluid rounded-start w-100" alt="University of Ghana" loading="lazy" decoding="async">
         </div>
         <div class="col-12 col-md-8">
           <div class="card-body h-100 d-flex flex-column justify-content-center">
@@ -329,7 +383,7 @@
     <div class="card shadow-sm mb-4 education-card">
       <div class="row g-0">
         <div class="col-12 col-md-4">
-          <img src="assets/imgs/santa_city.jpg" class="img-fluid rounded-start w-100" alt="High School">
+          <img src="assets/imgs/santa_city.jpg" class="img-fluid rounded-start w-100" alt="High School" loading="lazy" decoding="async">
         </div>
         <div class="col-12 col-md-8">
           <div class="card-body h-100 d-flex flex-column justify-content-center">
@@ -361,7 +415,7 @@
         <!-- Company Logo -->
         <div class="col-12 col-md-3">
           <div class="experience-logo">
-            <img src="assets/imgs/unique_insurance_logo.png" 
+            <img src="assets/imgs/unique_insurance_logo.png" loading="lazy" decoding="async"
                  class="img-fluid w-100 h-100" 
                  alt="Unique Insurance Logo"
                  style="object-fit: cover; border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;">
@@ -392,7 +446,7 @@
         <!-- Company Logo -->
         <div class="col-12 col-md-3">
           <div class="experience-logo">
-            <img src="assets/imgs/newgas-logo-1.png" 
+            <img src="assets/imgs/newgas-logo-1.png" loading="lazy" decoding="async"
                  class="img-fluid w-100 h-100" 
                  alt="Unique Insurance Logo"
                  style="object-fit: cover; border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;">
@@ -644,7 +698,7 @@
       <!-- Project Card 1 -->
       <div class="col-md-4">
         <div class="portfolio-card">
-          <img src="assets/imgs/folio-1.jpg" class="portfolio-card-img" alt="Project 1">
+          <img src="assets/imgs/folio-1.jpg" class="portfolio-card-img" alt="Project 1" loading="lazy" decoding="async">
           <div class="portfolio-card-overlay">
             <div class="portfolio-card-caption">
               <h4>Web Designing</h4>
@@ -661,7 +715,7 @@
       <!-- Project Card 2 -->
       <div class="col-md-4">
         <div class="portfolio-card">
-          <img src="assets/imgs/folio-2.png" class="portfolio-card-img" alt="Project 2">
+          <img src="assets/imgs/folio-2.png" class="portfolio-card-img" alt="Project 2" loading="lazy" decoding="async">
           <div class="portfolio-card-overlay">
             <div class="portfolio-card-caption">
               <h4>Climafy</h4>
@@ -678,7 +732,7 @@
       <!-- Project Card 3 -->
       <div class="col-md-4">
         <div class="portfolio-card">
-          <img src="assets/imgs/smartbin-image.png" class="portfolio-card-img" alt="Project 3">
+          <img src="assets/imgs/smartbin-image.png" class="portfolio-card-img" alt="Project 3" loading="lazy" decoding="async">
           <div class="portfolio-card-overlay">
             <div class="portfolio-card-caption">
               <h4>Smart Bin</h4>
@@ -696,7 +750,7 @@
       <!-- Project Card 4 -->
       <div class="col-md-4 mt-4">
         <div class="portfolio-card">
-          <img src="assets/imgs/sikabaasally.png" class="portfolio-card-img" alt="Project 4">
+          <img src="assets/imgs/sikabaasally.png" class="portfolio-card-img" alt="Project 4" loading="lazy" decoding="async">
           <div class="portfolio-card-overlay">
             <div class="portfolio-card-caption">
               <h4>E-Commerce Store</h4>
@@ -713,7 +767,7 @@
       <!-- Project Card 5 -->
       <div class="col-md-4 mt-4">
         <div class="portfolio-card">
-          <img src="assets/imgs/currency-converter.png" class="portfolio-card-img" alt="Project 5">
+          <img src="assets/imgs/currency-converter.png" class="portfolio-card-img" alt="Project 5" loading="lazy" decoding="async">
           <div class="portfolio-card-overlay">
             <div class="portfolio-card-caption">
               <h4>Task Manager App</h4>
@@ -730,7 +784,7 @@
       <!-- Project Card 6 -->
       <div class="col-md-4 mt-4">
         <div class="portfolio-card">
-          <img src="assets/imgs/event-pay.png" class="portfolio-card-img" alt="Project 6">
+          <img src="assets/imgs/event-pay.png" class="portfolio-card-img" alt="Project 6" loading="lazy" decoding="async">
           <div class="portfolio-card-overlay">
             <div class="portfolio-card-caption">
               <h4>Blog Platform</h4>
@@ -994,7 +1048,7 @@
             <div class="modal-body text-center" id="certModalBody">
                 <div class="cert-image-wrapper">
                     <div class="cert-watermark">ANTHONY GUDU</div>
-                    <img id="certModalImage" src="" alt="Certificate" class="img-fluid rounded mb-3 cert-protected-image" 
+                    <img id="certModalImage" src="" alt="Certificate" class="img-fluid rounded mb-3 cert-protected-image" loading="lazy" decoding="async"
                          style="max-height: 500px; width: 100%; object-fit: contain;"
                          oncontextmenu="return false;" 
                          ondragstart="return false;"
@@ -1133,7 +1187,7 @@
                   "Working with Anthony was a great experience. He built a modern, responsive website for our business and delivered ahead of schedule. Highly recommend him for any web development project!"
                 </p>
                 <div class="testimonial-author">
-                  <img src="assets/imgs/avatar2.jpg" alt="Michael Lee" class="testimonial-avatar">
+                  <img src="assets/imgs/avatar2.jpg" alt="Michael Lee" class="testimonial-avatar" loading="lazy" decoding="async">
                   <div class="testimonial-author-info">
                     <h6 class="testimonial-author-name">Michael Lee</h6>
                     <small class="testimonial-author-position">Marketing Manager, BrightTech</small>
@@ -1156,7 +1210,7 @@
                   "Anthony is not only skilled but also very professional. He helped us design a clean and functional dashboard for our system. His attention to detail really stands out."
                 </p>
                 <div class="testimonial-author">
-                  <img src="assets/imgs/avatar3.jpg" alt="Sarah Johnson" class="testimonial-avatar">
+                  <img src="assets/imgs/avatar3.jpg" alt="Sarah Johnson" class="testimonial-avatar" loading="lazy" decoding="async">
                   <div class="testimonial-author-info">
                     <h6 class="testimonial-author-name">Sarah Johnson</h6>
                     <small class="testimonial-author-position">Product Owner, Innovate Solutions</small>
@@ -1179,7 +1233,7 @@
                   "Anthony delivered exceptional results on our e-commerce platform. His coding skills are top-notch, and he was always available to answer questions. A true professional!"
                 </p>
                 <div class="testimonial-author">
-                  <img src="assets/imgs/avatar2.jpg" alt="David Chen" class="testimonial-avatar">
+                  <img src="assets/imgs/avatar2.jpg" alt="David Chen" class="testimonial-avatar" loading="lazy" decoding="async">
                   <div class="testimonial-author-info">
                     <h6 class="testimonial-author-name">David Chen</h6>
                     <small class="testimonial-author-position">CEO, ShopHub</small>
@@ -1202,7 +1256,7 @@
                   "I've worked with many developers, but Anthony stands out for his creativity and problem-solving abilities. He turned our complex requirements into an elegant solution."
                 </p>
                 <div class="testimonial-author">
-                  <img src="assets/imgs/avatar3.jpg" alt="Emily Rodriguez" class="testimonial-avatar">
+                  <img src="assets/imgs/avatar3.jpg" alt="Emily Rodriguez" class="testimonial-avatar" loading="lazy" decoding="async">
                   <div class="testimonial-author-info">
                     <h6 class="testimonial-author-name">Emily Rodriguez</h6>
                     <small class="testimonial-author-position">Tech Lead, DataFlow Systems</small>
@@ -1239,7 +1293,7 @@
 <div class="blog-wrapper">
     <div class="blog-card">
         <div class="blog-card-header">
-            <img src="assets/imgs/img-2.jpg" class="blog-card-img"
+            <img src="assets/imgs/img-2.jpg" class="blog-card-img" loading="lazy" decoding="async"
                 alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
         </div>
         <div class="blog-card-body">
@@ -1462,17 +1516,25 @@
     </footer>
 
     <!-- core  -->
-    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
-    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      const enableAnimations = () => document.body.classList.add('animations-ready');
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(enableAnimations, { timeout: 1500 });
+      } else {
+        window.setTimeout(enableAnimations, 800);
+      }
+    </script>
+    <script src="assets/vendors/jquery/jquery-3.4.1.js" defer></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
 
 
     <!-- bootstrap 3 affix -->
-    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.affix.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
 
     <!-- Meyawo js -->
-    <script src="assets/js/meyawo.js"></script>
+    <script src="assets/js/meyawo.js" defer></script>
 
 <!-- Back to Top Button -->
 <a href="#home" id="back-to-top" class="back-to-top" title="Back to Top">
@@ -1482,7 +1544,7 @@
 <!-- Counter Animation Script -->
 
 <!-- Bootstrap 5 JS for Modal -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
 
 </body>
 
