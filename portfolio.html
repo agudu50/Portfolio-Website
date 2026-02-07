@@ -34,6 +34,11 @@
         animation-play-state: paused !important;
       }
 
+      /* Certificate modal title color */
+      #certModal .modal-title {
+        color: #ffffff;
+      }
+
       /* Respect reduced motion preferences */
       @media (prefers-reduced-motion: reduce) {
         * {
@@ -315,7 +320,7 @@
                     <div class="stat-icon">
                         <i class="fas fa-project-diagram"></i>
                     </div>
-                    <h2 class="stat-number" data-target="15">0</h2>
+                    <h2 class="stat-number" data-target="5">0</h2>
                     <p class="stat-label">Projects Completed</p>
                 </div>
             </div>
@@ -324,7 +329,7 @@
                     <div class="stat-icon">
                         <i class="fas fa-smile"></i>
                     </div>
-                    <h2 class="stat-number" data-target="10">0</h2>
+                    <h2 class="stat-number" data-target="7">0</h2>
                     <p class="stat-label">Happy Clients</p>
                 </div>
             </div>
@@ -333,7 +338,7 @@
                     <div class="stat-icon">
                         <i class="fas fa-calendar-alt"></i>
                     </div>
-                    <h2 class="stat-number" data-target="3">0</h2>
+                    <h2 class="stat-number" data-target="2">0</h2>
                     <p class="stat-label">Years of Experience</p>
                 </div>
             </div>
@@ -342,7 +347,7 @@
                     <div class="stat-icon">
                         <i class="fas fa-code"></i>
                     </div>
-                    <h2 class="stat-number" data-target="5000">0</h2>
+                    <h2 class="stat-number" data-target="2000">0</h2>
                     <p class="stat-label">Lines of Code</p>
                 </div>
             </div>
@@ -715,6 +720,7 @@
       <!-- Project Card 2 -->
       <div class="col-md-4">
         <div class="portfolio-card">
+
           <img src="assets/imgs/folio-2.png" class="portfolio-card-img" alt="Project 2" loading="lazy" decoding="async">
           <div class="portfolio-card-overlay">
             <div class="portfolio-card-caption">
@@ -774,7 +780,7 @@
               <p class="font-weight-normal">Category: Finance</p>
               <div class="portfolio-links">
                 <a href="#" target="_blank" class="btn btn-sm btn-outline-light">View Code</a>
-                <a href="#" target="_blank" class="btn btn-sm btn-light">Live Demo</a>
+                <a href="https://currency-exchange-chi-coral.vercel.app/" target="_blank" class="btn btn-sm btn-light">Live Demo</a>
               </div>
             </div>
           </div>
@@ -791,7 +797,7 @@
               <p class="font-weight-normal">Category: Content Management</p>
               <div class="portfolio-links">
                 <a href="#" target="_blank" class="btn btn-sm btn-outline-light">View Code</a>
-                <a href="#" target="_blank" class="btn btn-sm btn-light">Live Demo</a>
+                <a href="https://z-events.zoharix.tech/" target="_blank" class="btn btn-sm btn-light">Live Demo</a>
               </div>
             </div>
           </div>
@@ -979,63 +985,8 @@
                 </div>
             </div>
 
-            <!--Certificate 4-->
-            <!-- <div class="col-md-4 mb-4">
-                <div class="cert-card" data-bs-toggle="modal" data-bs-target="#certModal"
-                     data-cert-title="Git & Version Control"
-                     data-cert-issuer="LinkedIn Learning"
-                     data-cert-date="2024"
-                     data-cert-image="assets/imgs/certificates/git-cert.jpg"
-                     data-cert-link="#">
-                    <div class="cert-badge"><i class="fas fa-lock"></i> View Only</div>
-                    <div class="cert-icon">
-                        <i class="fab fa-git-alt"></i>
-                    </div>
-                    <h5 class="cert-title">Git & Version Control</h5>
-                    <p class="cert-issuer">LinkedIn Learning</p>
-                    <span class="cert-date">2024</span>
-                </div>
-            </div> -->
-
-            <!-- Certificate 5 -->
-            <!-- <div class="col-md-4 mb-4">
-                <div class="cert-card" data-bs-toggle="modal" data-bs-target="#certModal"
-                     data-cert-title="Database Management"
-                     data-cert-issuer="University of Ghana"
-                     data-cert-date="2023"
-                     data-cert-image="assets/imgs/certificates/database-cert.jpg"
-                     data-cert-link="#">
-                    <div class="cert-badge"><i class="fas fa-lock"></i> View Only</div>
-                    <div class="cert-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h5 class="cert-title">Database Management</h5>
-                    <p class="cert-issuer">University of Ghana</p>
-                    <span class="cert-date">2023</span>
-                </div>
-            </div> -->
-
-            <!-- Certificate 6 -->
-            <!-- <div class="col-md-4 mb-4">
-                <div class="cert-card" data-bs-toggle="modal" data-bs-target="#certModal"
-                     data-cert-title="Dean's Honor List"
-                     data-cert-issuer="University of Ghana"
-                     data-cert-date="2023"
-                     data-cert-image="assets/imgs/certificates/deans-list.jpg"
-                     data-cert-link="#">
-                    <div class="cert-badge"><i class="fas fa-lock"></i> View Only</div>
-                    <div class="cert-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h5 class="cert-title">Dean's Honor List</h5>
-                    <p class="cert-issuer">University of Ghana</p>
-                    <span class="cert-date">2023</span>
-                </div>
-            </div>
-        </div> -->
-    </div>
-</section>
-<!-- End of Certifications Section -->
+     
+   
 
 <!-- Certificate Modal -->
 <div class="modal fade" id="certModal" tabindex="-1" aria-labelledby="certModalLabel" aria-hidden="true">
