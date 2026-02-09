@@ -18,6 +18,14 @@ $(document).ready(function(){
         $('ul.nav').toggleClass('show');
     });
 
+    // Close hamburger menu on scroll
+    $(window).scroll(function(){
+        if ($('#nav-toggle').hasClass('is-active')) {
+            $('#nav-toggle').removeClass('is-active');
+            $('ul.nav').removeClass('show');
+        }
+    });
+
 
 
 
