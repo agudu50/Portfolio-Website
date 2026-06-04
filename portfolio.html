@@ -22,11 +22,6 @@
     <link rel="stylesheet" href="assets/css/meyawo.css">
 
     <style>
-      /* Defer animations until idle to speed initial render */
-      body:not(.animations-ready) * {
-        animation-play-state: paused !important;
-      }
-
       /* Certificate modal title color */
       #certModal .modal-title {
         color: #ffffff;
@@ -1498,13 +1493,14 @@
     <!-- core  -->
     <script>
       const enableAnimations = () => document.body.classList.add('animations-ready');
+      document.addEventListener('DOMContentLoaded', enableAnimations);
       if ('requestIdleCallback' in window) {
-        requestIdleCallback(enableAnimations, { timeout: 1500 });
+        requestIdleCallback(enableAnimations, { timeout: 500 });
       } else {
-        window.setTimeout(enableAnimations, 800);
+        window.setTimeout(enableAnimations, 300);
       }
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="assets/vendors/jquery/jquery-3.4.1.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="assets/vendors/bootstrap/bootstrap.affix.js" defer></script>
     <script src="assets/js/meyawo.js" defer></script>

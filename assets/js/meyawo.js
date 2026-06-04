@@ -66,18 +66,20 @@ $(document).ready(function(){
 
 
 // Contact Form Submission using EmailJS
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (event) {
+      event.preventDefault();
 
-  document.getElementById('contact-form').addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    emailjs.sendForm('service_zlhfoc5', 'template_u9iy82j', this)
-      .then(function () {
-        showMessage('Your message was sent successfully!', 'success');
-        document.getElementById('contact-form').reset();
-      }, function () {
-        showMessage('Oops! Something went wrong. Please try again.', 'danger');
-      });
-  });
+      emailjs.sendForm('service_zlhfoc5', 'template_u9iy82j', this)
+        .then(function () {
+          showMessage('Your message was sent successfully!', 'success');
+          contactForm.reset();
+        }, function () {
+          showMessage('Oops! Something went wrong. Please try again.', 'danger');
+        });
+    });
+  }
 
 
 
@@ -146,7 +148,7 @@ if (statsSection) {
 
 // Testimonial Carousel Auto-play with Enhanced Controls
 const testimonialCarousel = document.getElementById('testimonialCarousel');
-if (testimonialCarousel) {
+if (testimonialCarousel && typeof bootstrap !== 'undefined') {
     // Initialize Bootstrap carousel with auto-play
     const carousel = new bootstrap.Carousel(testimonialCarousel, {
         interval: 6000, // Change slide every 6 seconds
