@@ -16,7 +16,7 @@
     <link rel="preload" as="image" href="assets/imgs/man1.jpg" fetchpriority="high">
     <link rel="preload" as="image" href="assets/imgs/man12.jpg">
     <link rel="preload" as="image" href="assets/imgs/man13.jpg">
-    <link rel="preload" as="image" href="assets/imgs/man15.jpg">
+    <link rel="preload" as="image" href="assets/imgs/man15-hero.jpg">
     <link rel="preload" as="image" href="assets/imgs/man16.jpg">
     <!-- Font Awesome 6.5.1 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
@@ -1286,7 +1286,7 @@
             <div class="hero-bg-slide" data-bg="assets/imgs/man12.jpg"></div>
             <div class="hero-bg-slide" data-bg="assets/imgs/man13.jpg"></div>
             <div class="hero-bg-slide" data-bg="assets/imgs/man14.jpg"></div>
-            <div class="hero-bg-slide" data-bg="assets/imgs/man15.jpg"></div>
+            <div class="hero-bg-slide" data-bg="assets/imgs/man15-hero.jpg"></div>
             <div class="hero-bg-slide" data-bg="assets/imgs/man16.jpg"></div>
             
         </div>
@@ -1463,22 +1463,31 @@
             }
         }
 
-        function preloadSlideImage(slide) {
+        function preloadSlideImage(slide, attempt) {
             if (!slide) return Promise.resolve();
             const bg = slide.dataset.bg;
             if (!bg) return Promise.resolve();
             if (slide.dataset.preloaded === 'true') return Promise.resolve();
 
-            return new Promise((resolve) => {
+            const tryNum = attempt || 1;
+
+            return new Promise((resolve, reject) => {
                 const img = new Image();
-                const finish = () => {
+                img.onload = () => {
                     applySlideBackground(slide);
                     slide.dataset.preloaded = 'true';
                     resolve();
                 };
-                img.onload = finish;
-                img.onerror = finish;
-                img.src = bg;
+                img.onerror = () => {
+                    if (tryNum < 3) {
+                        setTimeout(() => {
+                            preloadSlideImage(slide, tryNum + 1).then(resolve).catch(reject);
+                        }, tryNum * 400);
+                    } else {
+                        reject(new Error('Failed to load ' + bg));
+                    }
+                };
+                img.src = bg + (tryNum > 1 ? '?retry=' + tryNum : '');
             });
         }
 
@@ -1501,7 +1510,12 @@
                     applySlideBackground(slide);
                     showSlide();
                 } else {
-                    preloadSlideImage(slide).then(showSlide);
+                    preloadSlideImage(slide)
+                        .then(showSlide)
+                        .catch(() => {
+                            applySlideBackground(slide);
+                            showSlide();
+                        });
                 }
             }
 
@@ -1513,8 +1527,8 @@
                 heroCounter.textContent = String(currentSlide + 1).padStart(2, '0');
             }
 
-            preloadSlideImage(heroSlides[(currentSlide + 1) % totalSlides]);
-            preloadSlideImage(heroSlides[(currentSlide - 1 + totalSlides) % totalSlides]);
+            preloadSlideImage(heroSlides[(currentSlide + 1) % totalSlides]).catch(() => {});
+            preloadSlideImage(heroSlides[(currentSlide - 1 + totalSlides) % totalSlides]).catch(() => {});
         }
 
         function nextSlide() {
@@ -1544,14 +1558,14 @@
                 });
             });
 
-            // Preload all slides; slides 12 & 13 (man15, man16) and man12/man13 load first
+            // Preload all slides; slide 12 (man15-hero) loads first
             const preloadOrder = [11, 12, 8, 9, 10];
             for (let i = 1; i < heroSlides.length; i++) {
                 if (!preloadOrder.includes(i)) preloadOrder.push(i);
             }
             preloadOrder.forEach((i, delay) => {
                 if (i < heroSlides.length) {
-                    setTimeout(() => preloadSlideImage(heroSlides[i]), delay * 150);
+                    setTimeout(() => preloadSlideImage(heroSlides[i]).catch(() => {}), delay * 150);
                 }
             });
         }
