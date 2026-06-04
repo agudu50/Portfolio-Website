@@ -14,6 +14,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preload" as="image" href="assets/imgs/man1.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/imgs/man12.jpg">
+    <link rel="preload" as="image" href="assets/imgs/man13.jpg">
+    <link rel="preload" as="image" href="assets/imgs/man15.jpg">
+    <link rel="preload" as="image" href="assets/imgs/man16.jpg">
     <!-- Font Awesome 6.5.1 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts -->
@@ -1459,22 +1463,58 @@
             }
         }
 
+        function preloadSlideImage(slide) {
+            if (!slide) return Promise.resolve();
+            const bg = slide.dataset.bg;
+            if (!bg) return Promise.resolve();
+            if (slide.dataset.preloaded === 'true') return Promise.resolve();
+
+            return new Promise((resolve) => {
+                const img = new Image();
+                const finish = () => {
+                    applySlideBackground(slide);
+                    slide.dataset.preloaded = 'true';
+                    resolve();
+                };
+                img.onload = finish;
+                img.onerror = finish;
+                img.src = bg;
+            });
+        }
+
         function goToSlide(index) {
-            heroSlides.forEach(slide => slide.classList.remove('active'));
+            const targetIndex = ((index % totalSlides) + totalSlides) % totalSlides;
+            const slide = heroSlides[targetIndex];
+
+            heroSlides.forEach(s => s.classList.remove('active'));
             heroIndicators.forEach(indicator => indicator.classList.remove('active'));
-            
-            currentSlide = index;
-            if (heroSlides[currentSlide]) {
-                applySlideBackground(heroSlides[currentSlide]);
-                heroSlides[currentSlide].classList.add('active');
+
+            currentSlide = targetIndex;
+
+            if (slide) {
+                const showSlide = () => {
+                    if (currentSlide === targetIndex) {
+                        slide.classList.add('active');
+                    }
+                };
+                if (slide.dataset.preloaded === 'true') {
+                    applySlideBackground(slide);
+                    showSlide();
+                } else {
+                    preloadSlideImage(slide).then(showSlide);
+                }
             }
+
             if (heroIndicators[currentSlide]) {
                 heroIndicators[currentSlide].classList.add('active');
             }
-            
+
             if (heroCounter) {
                 heroCounter.textContent = String(currentSlide + 1).padStart(2, '0');
             }
+
+            preloadSlideImage(heroSlides[(currentSlide + 1) % totalSlides]);
+            preloadSlideImage(heroSlides[(currentSlide - 1 + totalSlides) % totalSlides]);
         }
 
         function nextSlide() {
@@ -1492,8 +1532,10 @@
 
         if (heroSlides.length > 0) {
             applySlideBackground(heroSlides[0]);
+            heroSlides[0].classList.add('active');
+            preloadSlideImage(heroSlides[0]);
             startSlideshow();
-            
+
             heroIndicators.forEach((indicator, index) => {
                 indicator.addEventListener('click', () => {
                     stopSlideshow();
@@ -1502,32 +1544,16 @@
                 });
             });
 
-            const lazyLoadSlides = () => {
-                let index = 1;
-                const loadNextSlide = () => {
-                    if (index < heroSlides.length) {
-                        applySlideBackground(heroSlides[index++]);
-                    }
-                    if (index < heroSlides.length) {
-                        if ('requestIdleCallback' in window) {
-                            requestIdleCallback(loadNextSlide, { timeout: 2000 });
-                        } else {
-                            setTimeout(loadNextSlide, 400);
-                        }
-                    }
-                };
-                if ('requestIdleCallback' in window) {
-                    requestIdleCallback(loadNextSlide, { timeout: 2000 });
-                } else {
-                    setTimeout(loadNextSlide, 1500);
-                }
-            };
-
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(lazyLoadSlides, { timeout: 2000 });
-            } else {
-                setTimeout(lazyLoadSlides, 1500);
+            // Preload all slides; slides 12 & 13 (man15, man16) and man12/man13 load first
+            const preloadOrder = [11, 12, 8, 9, 10];
+            for (let i = 1; i < heroSlides.length; i++) {
+                if (!preloadOrder.includes(i)) preloadOrder.push(i);
             }
+            preloadOrder.forEach((i, delay) => {
+                if (i < heroSlides.length) {
+                    setTimeout(() => preloadSlideImage(heroSlides[i]), delay * 150);
+                }
+            });
         }
 
         // Enhanced Typing Effect
