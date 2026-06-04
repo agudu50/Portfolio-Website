@@ -15,16 +15,9 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://code.jquery.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Latest Font Awesome 6.5.1 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-
-
-
-
-    <link ref href="">
     <!-- Bootstrap + Meyawo main styles -->
     <link rel="stylesheet" href="assets/css/meyawo.css">
 
@@ -142,7 +135,7 @@
                     <div class="about-img-container">
                         <div class="about-img-frame">
                             <div class="about-img-stack">
-                                <img src="assets/imgs/man1.jpg" id="aboutImage1" class="about-img-main is-visible" alt="Anthony Gudu - Full Stack Developer" loading="lazy" decoding="async">
+                                <img src="assets/imgs/man1.jpg" id="aboutImage1" class="about-img-main is-visible" alt="Anthony Gudu - Full Stack Developer" loading="eager" decoding="async" fetchpriority="high">
                                 <img src="assets/imgs/man2.jpg" id="aboutImage2" class="about-img-main" alt="Anthony Gudu - Full Stack Developer" loading="lazy" decoding="async">
                             </div>
                             <div class="about-img-overlay"></div>
@@ -274,8 +267,25 @@
                     'assets/imgs/man16.jpg'
                 ];
 
-                // Preload images
-                sources.forEach(src => { const i = new Image(); i.src = src; });
+                // Preload slideshow images progressively (avoids blocking initial paint)
+                const preloadSrc = (src) => { const img = new Image(); img.src = src; };
+                preloadSrc(sources[0]);
+                preloadSrc(sources[1]);
+                let preloadIdx = 2;
+                function preloadRemaining() {
+                    if (preloadIdx >= sources.length) return;
+                    preloadSrc(sources[preloadIdx++]);
+                    if ('requestIdleCallback' in window) {
+                        requestIdleCallback(preloadRemaining, { timeout: 800 });
+                    } else {
+                        setTimeout(preloadRemaining, 150);
+                    }
+                }
+                if ('requestIdleCallback' in window) {
+                    requestIdleCallback(preloadRemaining, { timeout: 2500 });
+                } else {
+                    setTimeout(preloadRemaining, 1200);
+                }
 
                 let currentIndex = 0;
                 let showingA = true;
@@ -1494,27 +1504,15 @@
         window.setTimeout(enableAnimations, 800);
       }
     </script>
-    <script src="assets/vendors/jquery/jquery-3.4.1.js" defer></script>
-    <script src="assets/vendors/bootstrap/bootstrap.bundle.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
-
-
-    <!-- bootstrap 3 affix -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="assets/vendors/bootstrap/bootstrap.affix.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
-
-    <!-- Meyawo js -->
     <script src="assets/js/meyawo.js" defer></script>
 
 <!-- Back to Top Button -->
 <a href="#home" id="back-to-top" class="back-to-top" title="Back to Top">
     <i class="fas fa-arrow-up"></i>
 </a>
-
-<!-- Counter Animation Script -->
-
-<!-- Bootstrap 5 JS for Modal -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
 
 </body>
 

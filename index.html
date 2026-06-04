@@ -13,6 +13,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://code.jquery.com">
+    <link rel="prefetch" href="portfolio.html" as="document">
+    <link rel="prefetch" href="assets/css/meyawo.css" as="style">
     <link rel="preload" as="image" href="assets/imgs/man1.jpg" fetchpriority="high">
     <!-- Font Awesome 6.5.1 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
@@ -1487,14 +1491,63 @@
             });
 
             const lazyLoadSlides = () => {
-                heroSlides.forEach(slide => applySlideBackground(slide));
+                let index = 1;
+                const loadNextSlide = () => {
+                    if (index < heroSlides.length) {
+                        applySlideBackground(heroSlides[index++]);
+                    }
+                    if (index < heroSlides.length) {
+                        if ('requestIdleCallback' in window) {
+                            requestIdleCallback(loadNextSlide, { timeout: 2000 });
+                        } else {
+                            setTimeout(loadNextSlide, 400);
+                        }
+                    }
+                };
+                if ('requestIdleCallback' in window) {
+                    requestIdleCallback(loadNextSlide, { timeout: 2000 });
+                } else {
+                    setTimeout(loadNextSlide, 1500);
+                }
             };
 
             if ('requestIdleCallback' in window) {
-                requestIdleCallback(lazyLoadSlides, { timeout: 3000 });
+                requestIdleCallback(lazyLoadSlides, { timeout: 2000 });
             } else {
-                setTimeout(lazyLoadSlides, 2000);
+                setTimeout(lazyLoadSlides, 1500);
             }
+        }
+
+        // Prefetch portfolio assets so navigation feels instant
+        function prefetchPortfolio() {
+            if (window._portfolioPrefetchStarted) return;
+            window._portfolioPrefetchStarted = true;
+            const assets = [
+                'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css',
+                'https://code.jquery.com/jquery-3.6.0.min.js',
+                'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js',
+                'assets/js/meyawo.js'
+            ];
+            assets.forEach(function (url) {
+                const link = document.createElement('link');
+                link.rel = 'prefetch';
+                link.href = url;
+                if (url.startsWith('http')) link.crossOrigin = 'anonymous';
+                document.head.appendChild(link);
+            });
+        }
+
+        document.querySelectorAll('a[href*="portfolio.html"]').forEach(function (anchor) {
+            var warm = function () { prefetchPortfolio(); };
+            anchor.addEventListener('mouseenter', warm, { once: true });
+            anchor.addEventListener('focus', warm, { once: true });
+            anchor.addEventListener('touchstart', warm, { once: true, passive: true });
+        });
+
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(prefetchPortfolio, { timeout: 1200 });
+        } else {
+            setTimeout(prefetchPortfolio, 600);
         }
 
         // Enhanced Typing Effect
