@@ -18,13 +18,23 @@ $(document).ready(function(){
         $('ul.nav').toggleClass('show');
     });
 
-    // Close hamburger menu on scroll
-    $(window).scroll(function(){
-        if ($('#nav-toggle').hasClass('is-active')) {
-            $('#nav-toggle').removeClass('is-active');
-            $('ul.nav').removeClass('show');
-        }
-    });
+    // Navbar affix + close mobile menu (replaces bootstrap.affix.js)
+    let scrollTicking = false;
+    window.addEventListener('scroll', function () {
+        if (scrollTicking) return;
+        scrollTicking = true;
+        requestAnimationFrame(function () {
+            const navbar = document.querySelector('.custom-navbar');
+            if (navbar) {
+                navbar.classList.toggle('affix', window.scrollY > 20);
+            }
+            if ($('#nav-toggle').hasClass('is-active')) {
+                $('#nav-toggle').removeClass('is-active');
+                $('ul.nav').removeClass('show');
+            }
+            scrollTicking = false;
+        });
+    }, { passive: true });
 
 
 
@@ -70,6 +80,11 @@ $(document).ready(function(){
   if (contactForm) {
     contactForm.addEventListener('submit', function (event) {
       event.preventDefault();
+      if (!window.emailjs) {
+        showMessage('Form is still loading. Please try again in a moment.', 'warning');
+        if (typeof window.__loadEmailJS === 'function') window.__loadEmailJS();
+        return;
+      }
 
       emailjs.sendForm('service_zlhfoc5', 'template_u9iy82j', this)
         .then(function () {
@@ -110,24 +125,27 @@ function showMessage(message, type) {
 }
 
 
-// Counter Animation
+// Counter Animation (single rAF loop — avoids hundreds of timers)
 const counters = document.querySelectorAll('.stat-number');
-const speed = 200;
+const counterState = Array.from(counters).map(counter => ({
+    el: counter,
+    target: +counter.getAttribute('data-target'),
+    current: 0
+}));
 
-const animateCounter = () => {
-    counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const increment = target / speed;
-
-        if (count < target) {
-            counter.innerText = Math.ceil(count + increment);
-            setTimeout(animateCounter, 10);
+function animateCounters() {
+    let done = true;
+    counterState.forEach(item => {
+        if (item.current < item.target) {
+            done = false;
+            item.current = Math.min(item.target, item.current + Math.max(1, Math.ceil(item.target / 60)));
+            item.el.innerText = item.current;
         } else {
-            counter.innerText = target + '+';
+            item.el.innerText = item.target + '+';
         }
     });
-};
+    if (!done) requestAnimationFrame(animateCounters);
+}
 
 // Trigger counter when visible
 const statsSection = document.getElementById('stats');
@@ -136,7 +154,7 @@ let hasAnimated = false;
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting && !hasAnimated) {
-            animateCounter();
+            animateCounters();
             hasAnimated = true;
         }
     });
@@ -146,43 +164,49 @@ if (statsSection) {
     observer.observe(statsSection);
 }
 
-// Testimonial Carousel Auto-play with Enhanced Controls
+// Testimonial Carousel — init only when section is near viewport
 const testimonialCarousel = document.getElementById('testimonialCarousel');
 if (testimonialCarousel && typeof bootstrap !== 'undefined') {
-    // Initialize Bootstrap carousel with auto-play
-    const carousel = new bootstrap.Carousel(testimonialCarousel, {
-        interval: 6000, // Change slide every 6 seconds
-        wrap: true, // Loop continuously
-        touch: true, // Enable touch swipe on mobile
-        pause: 'hover' // Pause on hover
-    });
-    
-    // Optional: Add custom timer indicator
-    let carouselTimer;
-    
-    // Start carousel automatically
-    carousel.cycle();
-    
-    // Pause on hover for better UX
-    testimonialCarousel.addEventListener('mouseenter', () => {
-        carousel.pause();
-    });
-    
-    testimonialCarousel.addEventListener('mouseleave', () => {
+    let carouselStarted = false;
+    const startCarousel = () => {
+        if (carouselStarted) return;
+        carouselStarted = true;
+        const carousel = new bootstrap.Carousel(testimonialCarousel, {
+            interval: 6000,
+            wrap: true,
+            touch: true,
+            pause: 'hover'
+        });
         carousel.cycle();
-    });
+        testimonialCarousel.addEventListener('mouseenter', () => carousel.pause());
+        testimonialCarousel.addEventListener('mouseleave', () => carousel.cycle());
+    };
+    if ('IntersectionObserver' in window) {
+        const carouselObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                startCarousel();
+                carouselObserver.disconnect();
+            }
+        }, { rootMargin: '200px' });
+        carouselObserver.observe(testimonialCarousel);
+    } else {
+        startCarousel();
+    }
 }
 
 // Back to Top Button
 const backToTopBtn = document.getElementById('back-to-top');
-
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-        backToTopBtn.classList.add('show');
-    } else {
-        backToTopBtn.classList.remove('show');
-    }
-});
+if (backToTopBtn) {
+    let backTopTicking = false;
+    window.addEventListener('scroll', () => {
+        if (backTopTicking) return;
+        backTopTicking = true;
+        requestAnimationFrame(() => {
+            backToTopBtn.classList.toggle('show', window.pageYOffset > 300);
+            backTopTicking = false;
+        });
+    }, { passive: true });
+}
 
 // Certificate Modal Functionality
 const certModal = document.getElementById('certModal');

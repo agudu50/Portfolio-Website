@@ -14,11 +14,11 @@
     <!-- Resource Hints -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="preconnect" href="https://code.jquery.com">
+    <link rel="preload" href="assets/css/meyawo.css" as="style">
+    <link rel="preload" href="assets/imgs/man1.jpg" as="image" fetchpriority="high">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <!-- Bootstrap + Meyawo main styles -->
     <link rel="stylesheet" href="assets/css/meyawo.css">
 
     <style>
@@ -38,29 +38,15 @@
     </style>
 
 
-<!-- EmailJS SDK v4 -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
-<script type="text/javascript">
-  window.addEventListener('DOMContentLoaded', function () {
-      if (!window.emailjs) return;
-      emailjs.init({
-        publicKey: "TzXuy0P9EpzJMMxnB",
-      });
-  });
-</script>
-
-
-
-
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
 
     <!-- Page Navbar -->
-    <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
+    <nav class="custom-navbar">
         <div class="container">
            <a class="logo" href="#">
-                <img src="assets/imgs/favicon.png" alt="Logo" class="logo-img" loading="eager" decoding="async" fetchpriority="high">
+                <img src="assets/imgs/logo-nav.png" alt="Logo" class="logo-img" width="40" height="40" loading="eager" decoding="async" fetchpriority="high">
                 <span class="logo-text">Anthony Gudu</span>
             </a>
             <ul class="nav">
@@ -250,37 +236,27 @@
                     'assets/imgs/man2.jpg',
                     'assets/imgs/man3.jpg',
                     'assets/imgs/man4.jpg',
-                    'assets/imgs/man5.JPG',
+                    'assets/imgs/man5-web.jpg',
                     'assets/imgs/man6.jpg',
                     'assets/imgs/man7.JPG',
-                    'assets/imgs/man8.jpg',
+                    'assets/imgs/man8-web.jpg',
                     'assets/imgs/man9.jpg',
                     'assets/imgs/man10.jpg',
                     'assets/imgs/man12.jpg',
                     'assets/imgs/man14.jpg',
-                    'assets/imgs/man15.jpg',
-                    'assets/imgs/man16.jpg'
+                    'assets/imgs/man15-hero.jpg',
+                    'assets/imgs/man16-web.jpg'
                 ];
 
-                // Preload slideshow images progressively (avoids blocking initial paint)
-                const preloadSrc = (src) => { const img = new Image(); img.src = src; };
+                const imageCache = new Map();
+                function preloadSrc(src) {
+                    if (!src || imageCache.has(src)) return;
+                    const img = new Image();
+                    img.src = src;
+                    imageCache.set(src, img);
+                }
                 preloadSrc(sources[0]);
                 preloadSrc(sources[1]);
-                let preloadIdx = 2;
-                function preloadRemaining() {
-                    if (preloadIdx >= sources.length) return;
-                    preloadSrc(sources[preloadIdx++]);
-                    if ('requestIdleCallback' in window) {
-                        requestIdleCallback(preloadRemaining, { timeout: 800 });
-                    } else {
-                        setTimeout(preloadRemaining, 150);
-                    }
-                }
-                if ('requestIdleCallback' in window) {
-                    requestIdleCallback(preloadRemaining, { timeout: 2500 });
-                } else {
-                    setTimeout(preloadRemaining, 1200);
-                }
 
                 let currentIndex = 0;
                 let showingA = true;
@@ -290,6 +266,9 @@
                     const currentImg = showingA ? imgA : imgB;
                     const nextImg = showingA ? imgB : imgA;
                     const nextSrc = sources[nextIndex];
+                    const upcomingIndex = (nextIndex + 1) % sources.length;
+                    preloadSrc(sources[nextIndex]);
+                    preloadSrc(sources[upcomingIndex]);
 
                     function reveal() {
                         nextImg.classList.add('is-visible');
@@ -425,7 +404,7 @@
         <!-- Company Logo -->
         <div class="col-12 col-md-3">
           <div class="experience-logo">
-            <img src="assets/imgs/unique_insurance_logo.png" loading="lazy" decoding="async"
+            <img src="assets/imgs/unique_insurance_logo-web.jpg" loading="lazy" decoding="async"
                  class="img-fluid w-100 h-100" 
                  alt="Unique Insurance Logo"
                  style="object-fit: cover; border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;">
@@ -726,7 +705,7 @@
       <div class="col-md-4">
         <div class="portfolio-card">
 
-          <img src="assets/imgs/folio-2.png" class="portfolio-card-img" alt="Project 2" loading="lazy" decoding="async">
+          <img src="assets/imgs/folio-2-web.jpg" class="portfolio-card-img" alt="Project 2" loading="lazy" decoding="async">
           <div class="portfolio-card-overlay">
             <div class="portfolio-card-caption">
               <h4>Climafy</h4>
@@ -761,7 +740,7 @@
       <!-- Project Card 4 -->
       <div class="col-md-4 mt-4">
         <div class="portfolio-card">
-          <img src="assets/imgs/sikabaasally.png" class="portfolio-card-img" alt="Project 4" loading="lazy" decoding="async">
+          <img src="assets/imgs/sikabaasally-web.jpg" class="portfolio-card-img" alt="Project 4" loading="lazy" decoding="async">
           <div class="portfolio-card-overlay">
             <div class="portfolio-card-caption">
               <h4>E-Commerce Store</h4>
@@ -1502,8 +1481,42 @@
     </script>
     <script src="assets/vendors/jquery/jquery-3.4.1.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
-    <script src="assets/vendors/bootstrap/bootstrap.affix.js" defer></script>
     <script src="assets/js/meyawo.js" defer></script>
+    <script>
+      (function () {
+        function loadEmailJS() {
+          if (window.__emailJsLoading || window.emailjs) return;
+          window.__emailJsLoading = true;
+          window.__loadEmailJS = loadEmailJS;
+          var s = document.createElement('script');
+          s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+          s.defer = true;
+          s.onload = function () {
+            if (window.emailjs) {
+              emailjs.init({ publicKey: 'TzXuy0P9EpzJMMxnB' });
+            }
+          };
+          document.body.appendChild(s);
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+          var contact = document.getElementById('contact');
+          if (!contact) return;
+          if ('IntersectionObserver' in window) {
+            var obs = new IntersectionObserver(function (entries) {
+              if (entries[0].isIntersecting) {
+                loadEmailJS();
+                obs.disconnect();
+              }
+            }, { rootMargin: '300px' });
+            obs.observe(contact);
+          } else {
+            loadEmailJS();
+          }
+          var form = document.getElementById('contact-form');
+          if (form) form.addEventListener('focusin', loadEmailJS, { once: true });
+        });
+      })();
+    </script>
 
 <!-- Back to Top Button -->
 <a href="#home" id="back-to-top" class="back-to-top" title="Back to Top">
