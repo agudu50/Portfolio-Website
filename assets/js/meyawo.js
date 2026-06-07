@@ -103,13 +103,26 @@ $(document).ready(function(){
 
 function showMessage(message, type) {
   const formMessages = document.getElementById('form-messages');
-  formMessages.innerHTML = `
-    <div class="alert alert-${type} alert-dismissible fade show text-center mx-auto" 
-         role="alert" style="max-width: 500px;">
-      <span>${message}</span>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  `;
+  if (!formMessages) return;
+  formMessages.innerHTML = ''; // Clear previous messages
+  
+  const alertDiv = document.createElement('div');
+  alertDiv.className = `alert alert-${type} alert-dismissible fade show text-center mx-auto`;
+  alertDiv.setAttribute('role', 'alert');
+  alertDiv.style.maxWidth = '500px';
+  
+  const span = document.createElement('span');
+  span.textContent = message; // Safe text assignment prevents HTML injection / XSS
+  
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'btn-close';
+  button.setAttribute('data-bs-dismiss', 'alert');
+  button.setAttribute('aria-label', 'Close');
+  
+  alertDiv.appendChild(span);
+  alertDiv.appendChild(button);
+  formMessages.appendChild(alertDiv);
 
   // Auto-hide after 5 seconds
   setTimeout(() => {
@@ -117,7 +130,6 @@ function showMessage(message, type) {
     if (alertElement) {
       // Trigger fade-out
       alertElement.classList.remove("show"); 
-
       
       setTimeout(() => {
         alertElement.remove();
