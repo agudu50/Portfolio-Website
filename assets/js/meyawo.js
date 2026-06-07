@@ -86,7 +86,7 @@ $(document).ready(function(){
         return;
       }
 
-      emailjs.sendForm('service_vt2x4ee', 'template_u9iy82j', this)
+      emailjs.sendForm('service_vt2x4ee', 'template_7fjs6vs', this)
         .then(function () {
           showMessage('Your message was sent successfully!', 'success');
           contactForm.reset();
