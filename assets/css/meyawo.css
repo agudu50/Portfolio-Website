@@ -14038,75 +14038,53 @@ pre .code {
     height: 4px;
     background: linear-gradient(90deg, #695aa6, #8b7cc7, #a994d4);
 }
-
-/* Modern Form Floating Groups */
-.form-floating-group {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+/* Sleek Modern Form */
+.form-group-modern {
+    text-align: left;
+    margin-bottom: 24px;
 }
 
-.form-control-modern {
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid #e0e0e0;
-    padding: 15px 0 10px 0;
-    font-size: 1rem;
-    color: #333;
-    transition: all 0.3s ease;
-    outline: none;
-    font-family: inherit;
-}
-
-.form-control-modern:focus {
-    border-bottom-color: #695aa6;
-    background: transparent;
-    box-shadow: none;
-}
-
-.form-control-modern::placeholder {
-    color: transparent;
-}
-
-.form-floating-group label {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    color: #999;
-    font-size: 1rem;
-    pointer-events: none;
-    transition: all 0.3s ease;
+.form-label-modern {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.form-floating-group label i {
-    font-size: 0.9rem;
+.form-label-modern i {
     color: #695aa6;
-}
-
-.form-control-modern:focus + label,
-.form-control-modern:not(:placeholder-shown) + label {
-    bottom: 30px;
     font-size: 0.85rem;
-    color: #695aa6;
-    font-weight: 500;
 }
 
-/* Animated Underline */
-.form-underline {
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    height: 2px;
-    width: 0;
-    background: linear-gradient(90deg, #695aa6, #8b7cc7);
-    transition: width 0.4s ease;
-}
-
-.form-floating-group .form-control-modern:focus ~ .form-underline {
+.form-control-modern {
     width: 100%;
+    padding: 14px 18px;
+    font-size: 0.95rem;
+    color: #212529;
+    background-color: #f8f9fa;
+    border: 1px solid rgba(105, 90, 166, 0.15);
+    border-radius: 12px;
+    transition: all 0.25s ease-in-out;
+    outline: none;
+    font-family: inherit;
+}
+
+.form-control-modern:focus {
+    background-color: #fff;
+    border-color: #695aa6;
+    box-shadow: 0 0 0 4px rgba(105, 90, 166, 0.12);
+}
+
+.form-control-modern::placeholder {
+    color: #adb5bd;
+}
+
+textarea.form-control-modern {
+    resize: vertical;
+    min-height: 120px;
 }
 
 /* Modern Submit Button */
@@ -14131,6 +14109,7 @@ pre .code {
 .btn-submit-modern:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 35px rgba(105, 90, 166, 0.4);
+    color: #fff;
 }
 
 .btn-submit-modern:active {
@@ -14165,12 +14144,8 @@ pre .code {
     }
     
     .form-control-modern {
-        padding: 12px 0 8px 0;
-        font-size: 0.95rem;
-    }
-    
-    .form-floating-group label {
-        font-size: 0.95rem;
+        padding: 12px 16px;
+        font-size: 0.9rem;
     }
     
     .contact-section {
@@ -14184,22 +14159,15 @@ pre .code {
 
 @media (max-width: 576px) {
     .contact-form-card {
-        padding: 25px 15px;
+        padding: 25px 20px;
         box-shadow: 0 5px 20px rgba(105, 90, 166, 0.1);
-    }
-    
-    .form-control-modern {
-        padding: 10px 0 6px 0;
-        font-size: 0.9rem;
-    }
-    
-    .form-floating-group label {
-        font-size: 0.85rem;
     }
     
     .btn-submit-modern {
         padding: 12px 30px;
         font-size: 1rem;
+        width: 100%;
+        justify-content: center;
     }
     
     .contact-section {
