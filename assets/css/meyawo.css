@@ -13811,7 +13811,6 @@ pre .code {
     background: #fff;
     border-radius: 20px;
     padding: 50px 40px;
-    box-shadow: 0 10px 40px rgba(105, 90, 166, 0.15);
     position: relative;
     min-height: 350px;
     display: flex;
@@ -13822,7 +13821,6 @@ pre .code {
 
 .testimonial-carousel-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 50px rgba(105, 90, 166, 0.25);
 }
 
 .testimonial-quote-icon {
