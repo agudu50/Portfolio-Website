@@ -90,8 +90,10 @@ $(document).ready(function(){
         .then(function () {
           showMessage('Your message was sent successfully!', 'success');
           contactForm.reset();
-        }, function () {
-          showMessage('Oops! Something went wrong. Please try again.', 'danger');
+        }, function (error) {
+          console.error('EmailJS Error:', error);
+          const errorMsg = error && (error.text || error.message) ? ': ' + (error.text || error.message) : '. Please check your connection or EmailJS credentials.';
+          showMessage('Oops! Something went wrong' + errorMsg, 'danger');
         });
     });
   }
