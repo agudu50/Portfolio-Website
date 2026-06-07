@@ -13831,6 +13831,12 @@ pre .code {
     margin-bottom: 20px;
 }
 
+.testimonial-stars {
+    font-size: 1.05rem;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
 .testimonial-text {
     font-size: 1.1rem;
     line-height: 1.8;
