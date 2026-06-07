@@ -14975,7 +14975,35 @@ h6 {
 
 /* Dark Mode Variables and Global Overrides */
 body.dark-theme {
-    background-color: #0a0a0f !important;
+    background: #0a0a0f !important;
+    color: #e1e1e6 !important;
+}
+
+body.dark-theme #fun-facts {
+    background: #0a0a0f !important;
+}
+
+body.dark-theme .fun-fact-card {
+    background: #12121e !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+body.dark-theme .fun-fact-card:hover {
+    box-shadow: 0 15px 40px rgba(105, 90, 166, 0.25) !important;
+}
+
+body.dark-theme .fun-fact-text {
+    color: #a994d4 !important;
+}
+
+/* Testimonial Section */
+body.dark-theme #testimonial {
+    background: #0d0d14 !important;
+}
+
+body.dark-theme .testimonial-carousel-card {
+    background: #12121e !important;
     color: #e1e1e6 !important;
 }
 
@@ -15010,7 +15038,7 @@ body.dark-theme .custom-navbar .hamburger-inner::after {
 
 /* Sections Backgrounds */
 body.dark-theme .modern-about-section {
-    background-color: #0d0d14 !important;
+    background: #0d0d14 !important;
 }
 
 body.dark-theme #about .about-heading {
@@ -15019,6 +15047,54 @@ body.dark-theme #about .about-heading {
 
 body.dark-theme #about .about-paragraph {
     color: #b0b0c0 !important;
+}
+
+body.dark-theme .about-paragraph strong {
+    color: #ffffff !important;
+}
+
+body.dark-theme .about-label {
+    color: #a994d4 !important;
+}
+
+body.dark-theme .about-img-overlay {
+    border-color: #a994d4 !important;
+}
+
+body.dark-theme .skill-badge {
+    background: rgba(169, 148, 212, 0.08) !important;
+    border-color: rgba(169, 148, 212, 0.2) !important;
+}
+
+body.dark-theme .skill-badge:hover {
+    background: rgba(169, 148, 212, 0.15) !important;
+    border-color: #a994d4 !important;
+    box-shadow: 0 8px 20px rgba(169, 148, 212, 0.15) !important;
+}
+
+body.dark-theme .skill-badge i {
+    color: #a994d4 !important;
+}
+
+body.dark-theme .skill-badge span {
+    color: #ffffff !important;
+}
+
+body.dark-theme .btn-modern-secondary {
+    color: #a994d4 !important;
+    border-color: #a994d4 !important;
+}
+
+body.dark-theme .btn-modern-secondary::before {
+    background: #a994d4 !important;
+}
+
+body.dark-theme .btn-modern-secondary:hover {
+    color: #12121e !important;
+}
+
+body.dark-theme .modal-title {
+    color: #ffffff !important;
 }
 
 body.dark-theme #about .about-tagline {
@@ -15031,7 +15107,17 @@ body.dark-theme #experience {
     background-color: #0a0a0f !important;
 }
 
+body.dark-theme #education h2,
+body.dark-theme #experience h2 {
+    color: #ffffff !important;
+}
+
 /* Cards (Education, Experience) */
+body.dark-theme .education-card:hover .card-body,
+body.dark-theme .experience-card:hover .card-body {
+    background-color: #1c1c2e !important;
+}
+
 body.dark-theme .education-card,
 body.dark-theme .experience-card {
     background-color: #12121e !important;
@@ -15056,7 +15142,7 @@ body.dark-theme .experience-card .card-subtitle {
 
 /* Stats Section */
 body.dark-theme .stats-section {
-    background-color: #0d0d14 !important;
+    background: #0d0d14 !important;
 }
 
 body.dark-theme .stat-card {
@@ -15075,17 +15161,13 @@ body.dark-theme .stat-label {
 
 /* Services section */
 body.dark-theme #service {
-    background-color: #0a0a0f !important;
+    background: #0a0a0f !important;
 }
 
 body.dark-theme .service-card-enhanced {
-    background-color: #12121e !important;
+    background: #12121e !important;
     border: 1px solid rgba(255, 255, 255, 0.06) !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
-}
-
-body.dark-theme .service-card-enhanced:hover {
-    box-shadow: 0 15px 40px rgba(105, 90, 166, 0.15) !important;
 }
 
 body.dark-theme .service-title {
@@ -15096,6 +15178,19 @@ body.dark-theme .service-description {
     color: #b0b0c0 !important;
 }
 
+body.dark-theme .service-card-enhanced:hover {
+    background: #1c1c2e !important;
+    box-shadow: 0 15px 40px rgba(105, 90, 166, 0.15) !important;
+}
+
+body.dark-theme .service-card-enhanced:hover .service-title {
+    color: #a994d4 !important;
+}
+
+body.dark-theme .service-card-enhanced:hover .service-description {
+    color: #ffffff !important;
+}
+
 body.dark-theme .service-tags .tag {
     background-color: rgba(105, 90, 166, 0.2) !important;
     color: #a994d4 !important;
@@ -15103,7 +15198,23 @@ body.dark-theme .service-tags .tag {
 
 /* Projects Section */
 body.dark-theme #portfolio {
-    background-color: #0d0d14 !important;
+    background: #0d0d14 !important;
+}
+
+/* Tech Stack Marquee Section */
+body.dark-theme .tech-marquee-section {
+    background: #0d0d14 !important;
+}
+
+body.dark-theme .tech-item {
+    background-color: #12121e !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+body.dark-theme .tech-item:hover {
+    box-shadow: 0 8px 25px rgba(105, 90, 166, 0.3) !important;
 }
 
 /* Promise Section */
@@ -15118,7 +15229,7 @@ body.dark-theme .promise-card {
 
 /* Skills Section */
 body.dark-theme #skills {
-    background-color: #0a0a0f !important;
+    background: #0a0a0f !important;
 }
 
 body.dark-theme .skill-card-enhanced {
@@ -15141,7 +15252,7 @@ body.dark-theme .skill-item span {
 
 /* Certifications Section */
 body.dark-theme #certifications {
-    background-color: #0d0d14 !important;
+    background: #0d0d14 !important;
 }
 
 body.dark-theme .cert-card {
@@ -15164,7 +15275,7 @@ body.dark-theme .cert-issuer {
 
 /* Fun Facts Section */
 body.dark-theme #fun-facts {
-    background-color: #0a0a0f !important;
+    background: #0a0a0f !important;
 }
 
 body.dark-theme .fun-fact-card {
@@ -15177,9 +15288,13 @@ body.dark-theme .fun-fact-card:hover {
     box-shadow: 0 15px 40px rgba(105, 90, 166, 0.25) !important;
 }
 
+body.dark-theme .fun-fact-text {
+    color: #a994d4 !important;
+}
+
 /* Testimonial Section */
 body.dark-theme #testimonial {
-    background-color: #0d0d14 !important;
+    background: #0d0d14 !important;
 }
 
 body.dark-theme .testimonial-carousel-card {
