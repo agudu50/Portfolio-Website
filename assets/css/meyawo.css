@@ -14939,9 +14939,397 @@ textarea.form-control-modern {
     }
 }
 
+/* ==========================================================================
+   DARK THEME SYSTEM
+   ========================================================================== */
 
+/* Smooth Transition for Theme Changing */
+body, 
+section, 
+nav, 
+.card, 
+.stat-card, 
+.promise-card, 
+.service-card-enhanced, 
+.skill-card-enhanced, 
+.cert-card, 
+.fun-fact-card, 
+.testimonial-carousel-card, 
+.contact-form-card, 
+.form-control-modern, 
+.modal-content, 
+a, 
+p, 
+span, 
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
+/* Dark Mode Variables and Global Overrides */
+body.dark-theme {
+    background-color: #0a0a0f !important;
+    color: #e1e1e6 !important;
+}
 
+/* Navbar Dark Theme */
+body.dark-theme .custom-navbar {
+    background-color: transparent;
+}
 
+body.dark-theme .custom-navbar.affix {
+    background-color: rgba(10, 10, 15, 0.95) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
 
+body.dark-theme .custom-navbar .logo-text {
+    color: #ffffff !important;
+}
 
+body.dark-theme .custom-navbar .nav .link {
+    color: #b0b0c0 !important;
+}
+
+body.dark-theme .custom-navbar .nav .link:hover {
+    color: #8b7cc7 !important;
+}
+
+body.dark-theme .custom-navbar .hamburger-inner,
+body.dark-theme .custom-navbar .hamburger-inner::before,
+body.dark-theme .custom-navbar .hamburger-inner::after {
+    background-color: #ffffff !important;
+}
+
+/* Sections Backgrounds */
+body.dark-theme .modern-about-section {
+    background-color: #0d0d14 !important;
+}
+
+body.dark-theme #about .about-heading {
+    color: #ffffff !important;
+}
+
+body.dark-theme #about .about-paragraph {
+    color: #b0b0c0 !important;
+}
+
+body.dark-theme #about .about-tagline {
+    color: #a994d4 !important;
+}
+
+body.dark-theme .py-5.bg-light,
+body.dark-theme #education,
+body.dark-theme #experience {
+    background-color: #0a0a0f !important;
+}
+
+/* Cards (Education, Experience) */
+body.dark-theme .education-card,
+body.dark-theme .experience-card {
+    background-color: #12121e !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+body.dark-theme .education-card .card-title,
+body.dark-theme .experience-card .card-title {
+    color: #ffffff !important;
+}
+
+body.dark-theme .education-card .card-text,
+body.dark-theme .experience-card .card-text {
+    color: #b0b0c0 !important;
+}
+
+body.dark-theme .education-card .card-subtitle,
+body.dark-theme .experience-card .card-subtitle {
+    color: #a994d4 !important;
+}
+
+/* Stats Section */
+body.dark-theme .stats-section {
+    background-color: #0d0d14 !important;
+}
+
+body.dark-theme .stat-card {
+    background-color: #12121e !important;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .stat-number {
+    color: #ffffff !important;
+}
+
+body.dark-theme .stat-label {
+    color: #b0b0c0 !important;
+}
+
+/* Services section */
+body.dark-theme #service {
+    background-color: #0a0a0f !important;
+}
+
+body.dark-theme .service-card-enhanced {
+    background-color: #12121e !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+body.dark-theme .service-card-enhanced:hover {
+    box-shadow: 0 15px 40px rgba(105, 90, 166, 0.15) !important;
+}
+
+body.dark-theme .service-title {
+    color: #ffffff !important;
+}
+
+body.dark-theme .service-description {
+    color: #b0b0c0 !important;
+}
+
+body.dark-theme .service-tags .tag {
+    background-color: rgba(105, 90, 166, 0.2) !important;
+    color: #a994d4 !important;
+}
+
+/* Projects Section */
+body.dark-theme #portfolio {
+    background-color: #0d0d14 !important;
+}
+
+/* Promise Section */
+body.dark-theme .promise-section {
+    background: linear-gradient(135deg, #12121e 0%, #161626 100%) !important;
+}
+
+body.dark-theme .promise-card {
+    background-color: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Skills Section */
+body.dark-theme #skills {
+    background-color: #0a0a0f !important;
+}
+
+body.dark-theme .skill-card-enhanced {
+    background-color: #12121e !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+body.dark-theme .skill-card-enhanced:hover {
+    box-shadow: 0 15px 40px rgba(105, 90, 166, 0.15) !important;
+}
+
+body.dark-theme .skill-card-title {
+    color: #ffffff !important;
+}
+
+body.dark-theme .skill-item span {
+    color: #b0b0c0 !important;
+}
+
+/* Certifications Section */
+body.dark-theme #certifications {
+    background-color: #0d0d14 !important;
+}
+
+body.dark-theme .cert-card {
+    background-color: #12121e !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+body.dark-theme .cert-card:hover {
+    box-shadow: 0 15px 40px rgba(105, 90, 166, 0.15) !important;
+}
+
+body.dark-theme .cert-title {
+    color: #ffffff !important;
+}
+
+body.dark-theme .cert-issuer {
+    color: #b0b0c0 !important;
+}
+
+/* Fun Facts Section */
+body.dark-theme #fun-facts {
+    background-color: #0a0a0f !important;
+}
+
+body.dark-theme .fun-fact-card {
+    background: #12121e !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+body.dark-theme .fun-fact-card:hover {
+    box-shadow: 0 15px 40px rgba(105, 90, 166, 0.25) !important;
+}
+
+/* Testimonial Section */
+body.dark-theme #testimonial {
+    background-color: #0d0d14 !important;
+}
+
+body.dark-theme .testimonial-carousel-card {
+    background-color: #12121e !important;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3), 0 10px 30px -5px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark-theme .testimonial-carousel-card:hover {
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4), 0 20px 40px -10px rgba(0, 0, 0, 0.6) !important;
+}
+
+body.dark-theme .testimonial-text {
+    color: #e1e1e6 !important;
+}
+
+body.dark-theme .testimonial-author-name {
+    color: #a994d4 !important;
+}
+
+body.dark-theme .testimonial-author-position {
+    color: #b0b0c0 !important;
+}
+
+/* Contact Section */
+body.dark-theme .contact-section {
+    background: #0a0a0f !important;
+}
+
+body.dark-theme .contact-form-card {
+    background-color: #12121e !important;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-theme .form-label-modern {
+    color: #e1e1e6 !important;
+}
+
+body.dark-theme .form-control-modern {
+    background-color: #1a1a2b !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+body.dark-theme .form-control-modern:focus {
+    background-color: #1c1c32 !important;
+    border-color: #8b7cc7 !important;
+    box-shadow: 0 0 0 4px rgba(139, 124, 199, 0.2) !important;
+}
+
+body.dark-theme .form-control-modern::placeholder {
+    color: #6c757d !important;
+}
+
+body.dark-theme .section-title {
+    color: #a994d4 !important;
+}
+
+body.dark-theme .section-subtitle {
+    color: #8b7cc7 !important;
+}
+
+body.dark-theme .section-sm.bg-primary {
+    background-color: #12121e !important;
+}
+
+body.dark-theme .section-sm.bg-primary .text-light {
+    color: #e1e1e6 !important;
+}
+
+/* Modals Dark Mode */
+body.dark-theme .modal-content {
+    background-color: #12121e !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-theme .modal-header,
+body.dark-theme .modal-footer {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-theme .modal-header .btn-close {
+    filter: invert(1) grayscale(1) brightness(2);
+}
+
+body.dark-theme .cert-watermark {
+    color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Theme Toggle Button Style */
+.theme-toggle-wrapper {
+    margin-left: auto;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    order: 2; /* Ensures it sits next to logo on mobile */
+}
+
+@media (max-width: 991px) {
+    .theme-toggle-wrapper {
+        margin-right: 15px;
+    }
+}
+
+.theme-btn {
+    background: transparent;
+    border: none;
+    color: #695aa6;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.theme-btn:hover {
+    background: rgba(105, 90, 166, 0.1);
+    color: #8b7cc7;
+    transform: rotate(15deg) scale(1.08);
+}
+
+body.dark-theme .theme-btn {
+    color: #a994d4;
+}
+
+body.dark-theme .theme-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #e9dcfc;
+}
+
+.custom-navbar.affix .theme-btn {
+    color: #695aa6;
+}
+
+body.dark-theme .custom-navbar.affix .theme-btn {
+    color: #a994d4;
+}
+
+.custom-navbar.affix .theme-btn:hover {
+    background: rgba(105, 90, 166, 0.1);
+}
+
+body.dark-theme .custom-navbar.affix .theme-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
