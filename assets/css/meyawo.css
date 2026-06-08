@@ -15233,17 +15233,26 @@ body.dark-theme #skills {
 }
 
 body.dark-theme .skill-card-enhanced {
-    background-color: #12121e !important;
+    background: #12121e !important;
     border: 1px solid rgba(255, 255, 255, 0.06) !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
 }
 
 body.dark-theme .skill-card-enhanced:hover {
+    background: #1a1a2e !important;
     box-shadow: 0 15px 40px rgba(105, 90, 166, 0.15) !important;
 }
 
-body.dark-theme .skill-card-title {
-    color: #ffffff !important;
+body.dark-theme .skill-card-enhanced:hover .skill-card-title {
+    color: #a994d4 !important;
+}
+
+body.dark-theme .skill-item {
+    background: rgba(255, 255, 255, 0.03) !important;
+}
+
+body.dark-theme .skill-item:hover {
+    background: rgba(169, 148, 212, 0.1) !important;
 }
 
 body.dark-theme .skill-item span {
@@ -15447,4 +15456,45 @@ body.dark-theme .custom-navbar.affix .theme-btn {
 
 body.dark-theme .custom-navbar.affix .theme-btn:hover {
     background: rgba(255, 255, 255, 0.08);
+}
+
+
+/* Additional Dark Theme System Enhancements */
+body.dark-theme .header .overlay {
+    background-image: linear-gradient(to top, #0a0a0f 0%, rgba(105, 90, 166, 0.15) 99%, rgba(105, 90, 166, 0.3) 100%) !important;
+}
+
+body.dark-theme .header .header-content .header-title .up {
+    color: #e1e1e6 !important;
+}
+
+body.dark-theme .text-dark {
+    color: #e1e1e6 !important;
+}
+
+body.dark-theme .text-muted {
+    color: #8b8b9f !important;
+}
+
+body.dark-theme .badge.bg-primary {
+    background-color: rgba(169, 148, 212, 0.2) !important;
+    color: #a994d4 !important;
+    border: 1px solid rgba(169, 148, 212, 0.3) !important;
+}
+
+body.dark-theme .stat-icon i {
+    color: #a994d4 !important;
+    text-shadow: 0 0 15px rgba(169, 148, 212, 0.4);
+}
+
+body.dark-theme .portfolio-card .portfolio-card-overlay {
+    background-image: linear-gradient(to top, #12121e 0%, rgba(26, 26, 46, 0.8) 99%, rgba(26, 26, 46, 0.95) 100%) !important;
+}
+
+body.dark-theme .portfolio-card .portfolio-card-caption h4 {
+    color: #ffffff !important;
+}
+
+body.dark-theme .portfolio-card .portfolio-card-caption p {
+    color: #b0b0c0 !important;
 }
