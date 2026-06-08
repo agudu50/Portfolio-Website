@@ -15498,3 +15498,87 @@ body.dark-theme .portfolio-card .portfolio-card-caption h4 {
 body.dark-theme .portfolio-card .portfolio-card-caption p {
     color: #b0b0c0 !important;
 }
+
+
+/* Modern Theme Toggle Button Styles & Spacing */
+.theme-toggle-wrapper {
+    margin-left: auto;
+    margin-right: 35px !important;
+    display: flex;
+    align-items: center;
+    order: 2; /* Ensures it sits next to logo on mobile */
+}
+
+@media (max-width: 991px) {
+    .theme-toggle-wrapper {
+        margin-right: 30px !important;
+    }
+}
+
+.theme-btn-modern {
+    width: 60px;
+    height: 30px;
+    background: rgba(105, 90, 166, 0.08);
+    border: 1px solid rgba(105, 90, 166, 0.15);
+    border-radius: 30px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    outline: none;
+}
+
+.theme-btn-modern:focus {
+    outline: none;
+}
+
+.theme-btn-slider {
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, #ff9f43, #e67e22);
+    border-radius: 50%;
+    position: absolute;
+    left: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.theme-btn-slider i {
+    color: #fff;
+    font-size: 0.85rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Mode Styles for Modern Toggle */
+body.dark-theme .theme-btn-modern {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .theme-btn-slider {
+    left: 32px;
+    background: linear-gradient(135deg, #a994d4, #695aa6);
+    box-shadow: 0 2px 8px rgba(169, 148, 212, 0.4);
+}
+
+body.dark-theme .theme-btn-slider i {
+    transform: rotate(360deg);
+}
+
+/* Hover effects */
+.theme-btn-modern:hover {
+    border-color: rgba(105, 90, 166, 0.3);
+    background: rgba(105, 90, 166, 0.12);
+}
+
+body.dark-theme .theme-btn-modern:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+}

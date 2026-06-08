@@ -92,8 +92,10 @@
             </ul>
 
             <div class="theme-toggle-wrapper">
-                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
-                    <i class="fas fa-moon"></i>
+                <button id="theme-toggle" class="theme-btn-modern" aria-label="Toggle Theme">
+                    <div class="theme-btn-slider">
+                        <i class="fas fa-sun"></i>
+                    </div>
                 </button>
             </div>
 
@@ -1571,6 +1573,8 @@
         
         // Match icon class to current theme on load
         if (document.body.classList.contains('dark-theme')) {
+          icon.className = 'fas fa-moon';
+        } else {
           icon.className = 'fas fa-sun';
         }
         
@@ -1578,7 +1582,7 @@
           document.body.classList.toggle('dark-theme');
           const isDark = document.body.classList.contains('dark-theme');
           localStorage.setItem('theme', isDark ? 'dark' : 'light');
-          icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+          icon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
         });
       })();
     </script>
