@@ -15395,18 +15395,31 @@ body.dark-theme .cert-watermark {
     color: rgba(255, 255, 255, 0.02) !important;
 }
 
-/* Theme Toggle Button Style */
+/* Modern Theme Toggle Wrapper Layout & Spacing */
 .theme-toggle-wrapper {
-    margin-left: auto;
-    margin-right: 20px;
     display: flex;
     align-items: center;
-    order: 2; /* Ensures it sits next to logo on mobile */
+    order: 2 !important; /* Positions theme toggle before hamburger on mobile and after nav on desktop */
+    margin-left: 30px !important; /* Space from Contact link on desktop */
+    margin-right: 0 !important;
 }
 
-@media (max-width: 991px) {
+/* Base Hamburger desktop style: explicitly hide it on desktop to prevent any layout leakage */
+.custom-navbar .hamburger {
+    display: none !important;
+}
+
+@media (max-width: 991.98px) {
     .theme-toggle-wrapper {
-        margin-right: 15px;
+        margin-left: auto !important; /* Pushes the theme toggle & hamburger to the right on mobile */
+        margin-right: 0 !important;
+    }
+    
+    .custom-navbar .hamburger {
+        display: inline-block !important; /* Show hamburger on mobile */
+        margin-left: 25px !important; /* Generates a clean 25px gap between theme toggle and hamburger */
+        margin-right: 0 !important;
+        order: 3 !important; /* Ensures hamburger is to the right of the theme toggle */
     }
 }
 
@@ -15500,20 +15513,7 @@ body.dark-theme .portfolio-card .portfolio-card-caption p {
 }
 
 
-/* Modern Theme Toggle Button Styles & Spacing */
-.theme-toggle-wrapper {
-    margin-left: auto;
-    margin-right: 35px !important;
-    display: flex;
-    align-items: center;
-    order: 2; /* Ensures it sits next to logo on mobile */
-}
-
-@media (max-width: 991px) {
-    .theme-toggle-wrapper {
-        margin-right: 30px !important;
-    }
-}
+/* Unified Theme Toggle Wrapper style block relocated and configured above */
 
 .theme-btn-modern {
     width: 60px;
